@@ -1,0 +1,7 @@
+textarea.form-control {
+    min-height: 15rem;
+}
+
+.mw-600 {
+    max-width: 600px;
+}
