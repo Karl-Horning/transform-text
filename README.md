@@ -1,61 +1,69 @@
-# Replace Newlines Web App
+# React + TypeScript + Vite
 
-- [Replace Newlines Web App](#replace-newlines-web-app)
-  - [Description](#description)
-  - [Technologies Used](#technologies-used)
-  - [Getting Started](#getting-started)
-  - [Usage](#usage)
-  - [Contributing](#contributing)
-  - [Author](#author)
-  - [License](#license)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Description
+Currently, two official plugins are available:
 
-This web application allows users to manipulate text by replacing newline characters with the literal string "\\n" or vice versa. It provides a user-friendly interface where users can input text, toggle between the two transformation options, and copy the transformed text to the clipboard.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Technologies Used
+## Expanding the ESLint configuration
 
-- HTML
-- CSS (Bootstrap for styling)
-- JavaScript
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Getting Started
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-To run this application locally, follow these steps:
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-1. Clone this repository to your local machine:
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-   ```bash
-   git clone https://github.com/Karl-Horning/replace-newlines.git
-   ```
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-2. Navigate to the project directory:
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-   ```bash
-   cd replace-newlines
-   ```
-
-3. Open the `index.html` file in your web browser.
-
-## Usage
-
-1. Enter text into the input textarea.
-2. Toggle the switch to choose between replacing newline characters with "\\n" or replacing "\\n" with newline characters.
-3. The output textarea will display the transformed text.
-4. Click the "Copy Output" button to copy the transformed text to the clipboard.
-
-## Contributing
-
-Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
-
-## Author
-
-Karl Horning
-
-- [GitHub](https://github.com/Karl-Horning/)
-- [LinkedIn](https://www.linkedin.com/in/karl-horning/)
-- [CodePen](https://codepen.io/karlhorning)
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE).
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
