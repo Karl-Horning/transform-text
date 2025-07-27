@@ -4,6 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-    base: "/replace-newlines/",
+    base: "/transform-text/",
     plugins: [react(), tailwindcss()],
 });
