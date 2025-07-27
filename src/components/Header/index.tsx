@@ -3,7 +3,7 @@
  *
  * This component renders a section with a prominent page title.
  * It is intended to sit at the top of the interface and provide context
- * for the tool’s purpose.
+ * for the tool's purpose.
  *
  * @returns A header section containing the main title.
  */
