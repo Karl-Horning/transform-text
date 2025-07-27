@@ -1,5 +1,8 @@
+import type React from "react";
+
 type CopyTextProps = {
     onClick: () => void;
+    copyStatusMessage: React.ReactNode;
 };
 
 /**
@@ -13,7 +16,10 @@ type CopyTextProps = {
  * @param props.onClick - Callback fired when the "Copy Output" button is clicked.
  * @returns A section containing the clipboard copy button.
  */
-export default function CopyText({ onClick }: CopyTextProps) {
+export default function CopyText({
+    onClick,
+    copyStatusMessage,
+}: CopyTextProps) {
     return (
         <section id="copyButton" className="mb-6">
             <p className="mb-4 block font-medium">
@@ -29,6 +35,8 @@ export default function CopyText({ onClick }: CopyTextProps) {
                     Copy Output
                 </button>
             </div>
+
+            {copyStatusMessage}
         </section>
     );
 }

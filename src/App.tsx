@@ -28,20 +28,53 @@ function App() {
     // State for storing the transformed result
     const [result, setResult] = useState("");
 
+    // State for storing the status of copying the result to the clipboard
+    const [copyStatusMessage, setCopyStatusMessage] =
+        useState<React.ReactNode>(null);
+
+    // Clear message after 3 seconds
+    const clearCopiedMessage = () => {
+        setTimeout(() => setCopyStatusMessage(""), 3000);
+    };
+
     /**
-     * Copies the current transformed result to the clipboard.
+     * Handles copying the transformed text to the clipboard.
      *
-     * Logs an error if clipboard access fails.
+     * Displays a styled status message based on the outcome:
+     * - Shows a warning if there is no text to copy.
+     * - Shows a success message if the text is successfully copied.
+     * - Shows an error message if the clipboard operation fails.
+     *
+     * All messages are styled to resemble Bootstrap alerts using Tailwind CSS,
+     * and are cleared after a short timeout using `clearCopiedMessage`.
      */
     const handleCopy = async () => {
-        if (inputRef.current) {
-            try {
-                await navigator.clipboard.writeText(result);
-                console.log("Text copied to clipboard");
-            } catch (err) {
-                console.error("Unable to copy text to clipboard", err);
-            }
+        if (!result) {
+            setCopyStatusMessage(
+                <p className="rounded-md border border-yellow-300 bg-yellow-100 px-4 py-2 text-yellow-800 shadow-sm">
+                    ⚠️ Nothing to copy
+                </p>
+            );
+            clearCopiedMessage();
+            return;
         }
+
+        try {
+            await navigator.clipboard.writeText(result);
+            setCopyStatusMessage(
+                <p className="rounded-md border border-green-300 bg-green-100 px-4 py-2 text-green-800 shadow-sm">
+                    ✅ Text copied to clipboard
+                </p>
+            );
+        } catch (err) {
+            setCopyStatusMessage(
+                <p className="rounded-md border border-red-300 bg-red-100 px-4 py-2 text-red-800 shadow-sm">
+                    ❌ Unable to copy text to clipboard: {String(err)}
+                </p>
+            );
+        }
+
+        clearCopiedMessage();
     };
 
     /**
@@ -70,7 +103,10 @@ function App() {
                 <TextInput ref={inputRef} />
                 <ToolSelector onSelect={handleToolSelect} />
                 <TextOutput text={result} />
-                <CopyText onClick={handleCopy} />
+                <CopyText
+                    onClick={handleCopy}
+                    copyStatusMessage={copyStatusMessage}
+                />
             </div>
         </main>
     );
