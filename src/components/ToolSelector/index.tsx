@@ -1,4 +1,4 @@
-import { textTools } from "../../constants";
+import { textTools } from "../../data/textTools";
 
 type ToolSelectorProps = {
     onSelect: (tool: string) => void;

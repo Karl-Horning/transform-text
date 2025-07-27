@@ -4,6 +4,7 @@ import TextInput from "./components/TextInput";
 import ToolSelector from "./components/ToolSelector";
 import TextOutput from "./components/TextOutput";
 import CopyText from "./components/CopyText";
+import { textTools } from "./data/textTools";
 
 /**
  * The main application component for transforming text.
@@ -44,37 +45,22 @@ function App() {
     };
 
     /**
-     * Transforms the input text based on the selected tool.
+     * Finds and applies the selected transformation tool to the input text.
      *
-     * Supports the following tools:
-     * - "escape": Replaces newlines with `\n`
-     * - "unescape": Converts `\n` back into actual newlines
-     *
-     * @param tool - The selected tool name ("escape" or "unescape")
+     * @param tool - The selected tool's identifier (for example, "escape", "uppercase").
      */
     const handleToolSelect = (tool: string) => {
         if (!inputRef.current) return;
 
         const inputText = inputRef.current.value;
-        let transformedText = "";
+        const selectedTool = textTools.find((t) => t.selectOption === tool);
 
-        switch (tool) {
-            case "escape":
-                transformedText = inputText.replace(
-                    /[\r\n\u0085\u2028\u2029]+/g,
-                    "\\n"
-                );
-                break;
-            case "unescape":
-                transformedText = inputText.replace(/\\n/g, "\n");
-                break;
-
-            default:
-                transformedText = inputText;
-                break;
+        if (selectedTool?.transform) {
+            const transformed = selectedTool.transform(inputText);
+            setResult(transformed);
+        } else {
+            console.warn(`Unknown tool: ${tool}`);
         }
-
-        setResult(transformedText);
     };
 
     return (
