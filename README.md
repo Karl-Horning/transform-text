@@ -1,69 +1,157 @@
-# React + TypeScript + Vite
+# 🔤 Transform Text
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight text transformation tool for developers, writers, and curious minds. Escape newlines, change case formats, and quickly copy results to your clipboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 Table of Contents
 
-## Expanding the ESLint configuration
+- [🔤 Transform Text](#-transform-text)
+  - [📖 Table of Contents](#-table-of-contents)
+  - [🤓 Overview](#-overview)
+  - [📸 Demo](#-demo)
+  - [🛠️ Tech Stack](#️-tech-stack)
+  - [📦 Installation](#-installation)
+  - [🚀 Scripts](#-scripts)
+  - [📁 Project Structure](#-project-structure)
+  - [📐 Code Style](#-code-style)
+  - [🔍 Tests](#-tests)
+  - [📌 To Do](#-to-do)
+  - [🧪 Known Issues](#-known-issues)
+  - [🤝 Contributing](#-contributing)
+  - [📄 Licence](#-licence)
+  - [🙋 FAQ](#-faq)
+  - [👤 Author](#-author)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🤓 Overview
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**Transform Text** is a small web app built with React and Tailwind CSS. It lets users apply various string manipulations like escaping newlines, switching between case styles (for example, camelCase, snake_case), and copying the output. Ideal for developers working with data, APIs, or code formatting.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📸 Demo
+
+Try it live: [karlhorning.dev/transform-text/](https://www.karlhorning.dev/transform-text/)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: React (with Vite)
+- **Language**: JavaScript (ES Modules)
+- **Styling**: Tailwind CSS
+- **Tooling**: ESLint, Prettier
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/Karl-Horning/transform-text.git
+cd transform-text
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Scripts
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start local dev server   |
+| `npm run build`   | Create production build  |
+| `npm run preview` | Preview production build |
+| `npm run lint`    | Run ESLint checks        |
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+├── components/         # UI components (TextInput, ToolSelector, etc.)
+├── data/               # Tool definitions
+├── utils/              # Pure transformation logic
+├── App.jsx             # Main app component
+├── main.jsx            # Entry point
 ```
+
+---
+
+## 📐 Code Style
+
+This project follows:
+
+- ESLint (`eslint:recommended`)
+- Prettier with Tailwind plugin
+- [Conventional Commits](https://www.conventionalcommits.org/) for Git messages:
+
+  - `feat`: New feature
+  - `fix`: Bug fix
+  - `refactor`: Code cleanup
+  - `a11y`: Accessibility improvements
+  - `ux`: UX/UI tweaks
+
+---
+
+## 🔍 Tests
+
+```bash
+npm run test
+```
+
+Tests will be added soon using **Vitest** and/or **React Testing Library**.
+
+---
+
+## 📌 To Do
+
+- [x] Escape/unescape newlines
+- [x] Uppercase/lowercase tools
+- [x] Copy output to clipboard
+- [ ] Add support for:
+
+  - [ ] `camelCase`
+  - [ ] `PascalCase`
+  - [ ] `snake_case`
+  - [ ] `kebab-case`
+- [ ] Add tests
+- [x] Deploy live demo
+
+---
+
+## 🧪 Known Issues
+
+- No input validation yet (for example, for empty input fields)
+- Copy button is always active
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, open an issue first to discuss what you'd like to add or improve.
+
+---
+
+## 📄 Licence
+
+MIT © 2025 Karl Horning
+
+---
+
+## 🙋 FAQ
+
+**Q: Can I use this as a base for my own string utility tool?**
+A: Absolutely — just include credit if you fork the structure or UI.
+
+**Q: Why are there multiple case tools?**
+A: Different APIs, languages, and platforms prefer different naming conventions. This tool helps you switch between them quickly.
+
+---
+
+## 👤 Author
+
+Made with ❤️ by [Karl Horning](https://github.com/Karl-Horning)
