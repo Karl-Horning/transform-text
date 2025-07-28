@@ -205,3 +205,128 @@ export const sarcasticSpongeBob = (input: string) => {
 
     return result;
 };
+
+/**
+ * Converts a string to title case following the Chicago/MLA style guidelines.
+ *
+ * Capitalises nouns, verbs, adjectives, adverbs, and subordinating conjunctions.
+ * Lowercases articles, coordinating conjunctions, and short prepositions, unless
+ * they appear as the first or last word.
+ *
+ * @param input - The text to convert to Chicago/MLA-style title case.
+ * @returns The input string in properly formatted title case.
+ */
+export const TitleCaseMla = (input: string): string => {
+    const lowercaseWords = new Set([
+        "a",
+        "an",
+        "the",
+        "and",
+        "but",
+        "or",
+        "nor",
+        "for",
+        "so",
+        "yet",
+        "at",
+        "by",
+        "in",
+        "of",
+        "on",
+        "to",
+        "up",
+        "via",
+        "with",
+        "over",
+        "into",
+        "onto",
+        "off",
+        "as",
+    ]);
+
+    const words = input.trim().split(/\s+/);
+    const len = words.length;
+
+    return words
+        .map((word, index) => {
+            const lower = word.toLowerCase();
+
+            // Always capitalise first and last word
+            if (index === 0 || index === len - 1) {
+                return capitalise(word);
+            }
+
+            // Lowercase small/common words, otherwise capitalise
+            return lowercaseWords.has(lower) ? lower : capitalise(word);
+        })
+        .join(" ");
+};
+
+/**
+ * Capitalises the first character of a word and lowercases the rest.
+ *
+ * @param word - The word to capitalise.
+ * @returns The capitalised word.
+ */
+const capitalise = (word: string): string => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+};
+
+/**
+ * Converts a string to AP Style title case.
+ *
+ * Capitalises all principal words (nouns, verbs, adjectives, adverbs, pronouns, subordinating conjunctions),
+ * as well as prepositions of four letters or more. Does not capitalise articles, short coordinating conjunctions,
+ * or prepositions shorter than four letters unless they are the first or last word.
+ *
+ * @param input - The text to convert to AP-style title case.
+ * @returns The input string in AP title case format.
+ */
+export const titleCaseAP = (input: string): string => {
+    const lowercaseWords = new Set([
+        "a",
+        "an",
+        "the",
+        "and",
+        "but",
+        "or",
+        "nor",
+        "for",
+        "on",
+        "to",
+        "in",
+        "at",
+        "by",
+    ]);
+
+    const words = input.trim().split(/\s+/);
+    const len = words.length;
+
+    return words
+        .map((word, index) => {
+            const lower = word.toLowerCase();
+
+            // Always capitalise first and last word
+            if (index === 0 || index === len - 1) {
+                return capitalise(word);
+            }
+
+            return lowercaseWords.has(lower) ? lower : capitalise(word);
+        })
+        .join(" ");
+};
+
+/**
+ * Converts a string to sentence case.
+ *
+ * Capitalises only the first letter of the first word, and lowercases the rest.
+ *
+ * @param input - The text to convert to sentence case.
+ * @returns The input string in sentence case format.
+ */
+export const sentenceCase = (input: string): string => {
+    const trimmed = input.trim();
+    if (!trimmed) return "";
+
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+};

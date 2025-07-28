@@ -5,7 +5,10 @@ import {
     lowercase,
     pascalCase,
     sarcasticSpongeBob,
+    sentenceCase,
     snakeCase,
+    titleCaseAP,
+    TitleCaseMla,
     unescapeNewlines,
     uppercase,
 } from "../utils/transformText";
@@ -61,5 +64,20 @@ export const textTools = [
         buttonText: "Sarcastic SpongeBob",
         selectOption: "sarcasticSpongeBob",
         transform: sarcasticSpongeBob,
+    },
+    {
+        buttonText: "MLA Title Case",
+        selectOption: "TitleCaseMla",
+        transform: TitleCaseMla,
+    },
+    {
+        buttonText: "AP Title Case",
+        selectOption: "titleCaseAP",
+        transform: titleCaseAP,
+    },
+    {
+        buttonText: "Sentence Case",
+        selectOption: "sentenceCase",
+        transform: sentenceCase,
     },
 ];

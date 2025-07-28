@@ -125,8 +125,10 @@ Tests will be added soon using **Vitest** and/or **React Testing Library**.
 
 ## 🧪 Known Issues
 
-- No input validation yet (for example, for empty input fields)
-- Copy button is always active
+- No input validation yet (for example, empty input fields are allowed)
+- The `Copy Output` button is always active
+- `Sentence Case` converts proper nouns to lower case
+- `MLA Title Case` and `AP Title Case` convert PascalCase words like "JavaScript" to "Javascript"
 
 ---
 
