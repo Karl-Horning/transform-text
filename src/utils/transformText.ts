@@ -109,27 +109,27 @@ export const kebabCase = (input: string) => {
  * @param input - The text to convert to PascalCase.
  * @returns The input string in PascalCase format.
  */
-export const pascalCase = (input: string) => {
+export const pascalCase = (input: string): string => {
     return (
         input
-            // Remove apostrophes (don’t treat as separators)
-            .replace(/'/g, "")
+            // Insert spaces before capital letters preceded by lowercase letters or numbers
+            .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
 
-            // Replace all non-alphanumeric separators with space
-            .replace(/[\W_]+/g, " ")
+            // Replace all separators with a space
+            .replace(/[_\-\s]+/g, " ")
+
+            // Remove any non-word characters
+            .replace(/[^\w\s]/g, "")
 
             // Trim and split into words
             .trim()
-            .split(" ")
+            .split(/\s+/)
 
-            // Capitalise each word, preserving acronyms
-            .map((word) => {
-                if (word.toUpperCase() === word) return word;
-                return (
+            // Capitalise first letter of each word
+            .map(
+                (word) =>
                     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                );
-            })
-
+            )
             // Join to single string
             .join("")
     );
@@ -144,8 +144,18 @@ export const pascalCase = (input: string) => {
  * @returns The input string in camelCase format.
  */
 export const camelCase = (input: string) => {
-    // Use the pascalCase function to format the string
     const pascalText = pascalCase(input);
-    // Make the first character in a string lower case
-    return pascalText.charAt(0).toLowerCase() + pascalText.slice(1);
+
+    /**
+     * Match all sequences of:
+     * - Uppercase followed by lowercase letters (for example, "Response")
+     * - Consecutive uppercase letters (for example, "API", "OK")
+     */
+    const words = pascalText.match(/([A-Z]+(?=$|[A-Z][a-z])|[A-Z][a-z]*)/g);
+
+    if (!words) return pascalText;
+
+    return words
+        .map((word, index) => (index === 0 ? word.toLowerCase() : word))
+        .join("");
 };
