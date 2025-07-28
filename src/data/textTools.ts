@@ -1,6 +1,10 @@
 import {
+    camelCase,
     escapeNewlines,
+    kebabCase,
     lowercase,
+    pascalCase,
+    snakeCase,
     unescapeNewlines,
     uppercase,
 } from "../utils/transformText";
@@ -31,5 +35,25 @@ export const textTools = [
         buttonText: "Lowercase",
         selectOption: "lowercase",
         transform: lowercase,
+    },
+    {
+        buttonText: "snake_case",
+        selectOption: "snakeCase",
+        transform: snakeCase,
+    },
+    {
+        buttonText: "kebab-case",
+        selectOption: "kebabCase",
+        transform: kebabCase,
+    },
+    {
+        buttonText: "PascalCase",
+        selectOption: "pascalCase",
+        transform: pascalCase,
+    },
+    {
+        buttonText: "camelCase",
+        selectOption: "camelCase",
+        transform: camelCase,
     },
 ];
