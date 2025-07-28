@@ -62,7 +62,7 @@ export const snakeCase = (input: string) => {
             // Trim underscores from start and end
             .replace(/^_+|_+$/g, "")
 
-            // Convert the string to lowercase
+            // Convert to lowercase
             .toLowerCase()
     );
 };
@@ -79,26 +79,23 @@ export const snakeCase = (input: string) => {
 export const kebabCase = (input: string) => {
     return (
         input
-            // Add spaces before capital letters
-            .replace(/([A-Z])/g, " $1")
+            // Add spaces before capital letters (for camelCase support)
+            .replace(/([a-z])([A-Z])/g, "$1 $2")
 
-            // Replace multiple hyphens with a single hyphen
-            .replace(/-+/g, "-")
+            // Remove all characters except letters, numbers, spaces, hyphens, and underscores
+            .replace(/[^\w\s-]/g, "")
 
-            // Replace whitespace characters and underscores with hyphens
+            // Replace spaces and underscores with hyphens
             .replace(/[\s_]+/g, "-")
 
-            // Remove all special characters except hyphens
-            .replace(/[^\w\s-]|_/g, "")
-
             // Replace multiple hyphens with a single hyphen
             .replace(/-+/g, "-")
 
-            // Remove hyphens from the beginning and end of the string
+            // Trim hyphens from start and end
             .replace(/^-+/, "")
             .replace(/-+$/, "")
 
-            // Convert the string to lowercase
+            // Convert to lowercase
             .toLowerCase()
     );
 };
