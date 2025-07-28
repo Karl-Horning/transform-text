@@ -23,7 +23,7 @@ export default function CopyText({
     return (
         <section id="copyButton" className="mb-6">
             <p className="mb-4 block font-medium">
-                Step 4: Copy output to clipboard
+                Step 4: Copy the text to your clipboard
             </p>
 
             <div className="mb-4 flex flex-wrap gap-2">
@@ -32,7 +32,7 @@ export default function CopyText({
                     onClick={onClick}
                     className="flex-1 basis-[200px] cursor-pointer rounded-xl bg-blue-600 px-5 py-3 font-medium text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
-                    Copy Output
+                    Copy Formatted Text
                 </button>
             </div>
 

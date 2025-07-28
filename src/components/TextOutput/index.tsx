@@ -17,7 +17,7 @@ export default function TextOutput({ text }: TextOutputProps) {
     return (
         <section id="textOutput" className="mb-6">
             <label htmlFor="outputTextArea" className="mb-4 block font-medium">
-                Step 3: View output
+                Step 3: Preview the formatted text below
             </label>
             <textarea
                 id="outputTextArea"

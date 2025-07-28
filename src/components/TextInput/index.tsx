@@ -15,7 +15,7 @@ const TextInput = forwardRef<HTMLTextAreaElement>((_, ref) => {
     return (
         <section id="textInput" className="mb-6">
             <label htmlFor="inputTextArea" className="mb-4 block font-medium">
-                Step 1: Paste your text below
+                Step 1: Enter or paste your text below
             </label>
             <textarea
                 id="inputTextArea"

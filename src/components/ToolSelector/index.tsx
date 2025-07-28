@@ -18,7 +18,10 @@ type ToolSelectorProps = {
 export default function ToolSelector({ onSelect }: ToolSelectorProps) {
     return (
         <section id="buttonSelectors" className="mb-6">
-            <p className="mb-4 block font-medium">Step 2: Choose an action</p>
+            <p className="mb-4 block font-medium">
+                {" "}
+                Step 2: Select a formatting style or text action
+            </p>
 
             <div className="mb-4 flex flex-wrap gap-2">
                 {textTools.map(({ buttonText, selectOption }) => (
