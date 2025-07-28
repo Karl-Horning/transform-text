@@ -59,12 +59,15 @@ npm run dev
 
 ## 🚀 Scripts
 
-| Command           | Description              |
-| ----------------- | ------------------------ |
-| `npm run dev`     | Start local dev server   |
-| `npm run build`   | Create production build  |
-| `npm run preview` | Preview production build |
-| `npm run lint`    | Run ESLint checks        |
+| Command                | Description                   |
+| ---------------------- | ----------------------------- |
+| `npm run dev`          | Start local dev server        |
+| `npm run build`        | Create production build       |
+| `npm run preview`      | Preview production build      |
+| `npm run lint`         | Run ESLint checks             |
+| `npm run test`         | Run all tests once            |
+| `npm run test:watch`   | Run tests in watch mode       |
+| `npm run test:verbose` | Run tests with verbose output |
 
 ---
 
@@ -99,11 +102,25 @@ This project follows:
 
 ## 🔍 Tests
 
+Tests are written using **Jest** alongside **React Testing Library** to ensure both the core transformation logic and user interface components behave as expected.
+
+You'll find tests covering:
+
+- Pure utility functions for text transformations
+- React component rendering and interaction
+- UI behaviours such as the copy-to-clipboard button, including success and error states
+
+Run all tests with:
+
 ```bash
 npm run test
 ```
 
-Tests will be added soon using **Vitest** and/or **React Testing Library**.
+For continuous development, use watch mode:
+
+```bash
+npm run test:watch
+```
 
 ---
 
@@ -118,7 +135,7 @@ Tests will be added soon using **Vitest** and/or **React Testing Library**.
   - [x] `PascalCase`
   - [x] `snake_case`
   - [x] `kebab-case`
-- [ ] Add tests
+- [x] Add tests
 - [x] Deploy live demo
 
 ---
