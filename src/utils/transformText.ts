@@ -112,17 +112,26 @@ export const kebabCase = (input: string) => {
 export const pascalCase = (input: string) => {
     return (
         input
-            // Replace all whitespace, special characters, and underscores with a single space
-            .replace(/[^\w\s]|_+/g, " ")
-            .replace(/\s+/g, " ")
-            // Remove whitespace from beginning and end
+            // Remove apostrophes (don’t treat as separators)
+            .replace(/'/g, "")
+
+            // Replace all non-alphanumeric separators with space
+            .replace(/[\W_]+/g, " ")
+
+            // Trim and split into words
             .trim()
-            // Capitalise the first letter of each word
-            .replace(/(?:^|\W|_)\w/g, (match) => {
-                return match.toUpperCase();
+            .split(" ")
+
+            // Capitalise each word, preserving acronyms
+            .map((word) => {
+                if (word.toUpperCase() === word) return word;
+                return (
+                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                );
             })
-            // Replace whitespace characters
-            .replace(/[\s]+/g, "")
+
+            // Join to single string
+            .join("")
     );
 };
 
