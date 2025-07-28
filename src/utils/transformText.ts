@@ -315,3 +315,18 @@ export const titleCaseAP = (input: string): string => {
         })
         .join(" ");
 };
+
+/**
+ * Converts a string to sentence case.
+ *
+ * Capitalises only the first letter of the first word, and lowercases the rest.
+ *
+ * @param input - The text to convert to sentence case.
+ * @returns The input string in sentence case format.
+ */
+export const sentenceCase = (input: string): string => {
+    const trimmed = input.trim();
+    if (!trimmed) return "";
+
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+};

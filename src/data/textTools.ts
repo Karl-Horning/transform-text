@@ -5,6 +5,7 @@ import {
     lowercase,
     pascalCase,
     sarcasticSpongeBob,
+    sentenceCase,
     snakeCase,
     titleCaseAP,
     TitleCaseMla,
@@ -73,5 +74,10 @@ export const textTools = [
         buttonText: "AP Title Case",
         selectOption: "titleCaseAP",
         transform: titleCaseAP,
+    },
+    {
+        buttonText: "Sentence Case",
+        selectOption: "sentenceCase",
+        transform: sentenceCase,
     },
 ];
