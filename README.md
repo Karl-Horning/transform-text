@@ -112,12 +112,12 @@ Tests will be added soon using **Vitest** and/or **React Testing Library**.
 - [x] Escape/unescape newlines
 - [x] Uppercase/lowercase tools
 - [x] Copy output to clipboard
-- [ ] Add support for:
+- [x] Add support for:
 
-  - [ ] `camelCase`
-  - [ ] `PascalCase`
-  - [ ] `snake_case`
-  - [ ] `kebab-case`
+  - [x] `camelCase`
+  - [x] `PascalCase`
+  - [x] `snake_case`
+  - [x] `kebab-case`
 - [ ] Add tests
 - [x] Deploy live demo
 
