@@ -47,24 +47,20 @@ export const lowercase = (input: string) => input.toLowerCase();
 export const snakeCase = (input: string) => {
     return (
         input
-            // Add spaces before capital letters
-            .replace(/([A-Z])/g, " $1")
+            // Add spaces before capital letters (for camelCase support)
+            .replace(/([a-z])([A-Z])/g, "$1 $2")
 
-            // Replace multiple hyphens with a single hyphen
-            .replace(/-+/g, "-")
+            // Remove all characters except letters, numbers, underscores, hyphens, and whitespace
+            .replace(/[^\w\s-]/g, "")
 
-            // Replace whitespace characters and hyphens with underscores
+            // Replace whitespace and hyphens with underscores
             .replace(/[\s-]+/g, "_")
 
-            // Remove all special characters except underscores
-            .replace(/[^\w\s]|_/g, "_")
-
-            // Replace multiple underscores with a single underscore
+            // Replace multiple underscores with a single one
             .replace(/_+/g, "_")
 
-            // Remove special characters from the beginning and end of the string
-            .replace(/^[^a-zA-Z0-9]+/, "")
-            .replace(/[^a-zA-Z0-9]+$/, "")
+            // Trim underscores from start and end
+            .replace(/^_+|_+$/g, "")
 
             // Convert the string to lowercase
             .toLowerCase()
