@@ -7,7 +7,7 @@
  * @returns The input string with newlines replaced by `\n`.
  */
 export const escapeNewlines = (input: string) =>
-    input.replace(/[\r\n\u0085\u2028\u2029]+/g, "\\n");
+    input.trim().replace(/[\r\n\u0085\u2028\u2029]+/g, "\\n");
 
 /**
  * Converts all literal `\n` sequences in the input string back into actual newline characters.
@@ -17,7 +17,8 @@ export const escapeNewlines = (input: string) =>
  * @param input - The text to unescape newlines in.
  * @returns The input string with `\n` sequences replaced by actual newlines.
  */
-export const unescapeNewlines = (input: string) => input.replace(/\\n/g, "\n");
+export const unescapeNewlines = (input: string) =>
+    input.trim().replace(/\\n/g, "\n");
 
 /**
  * Converts all characters in the input string to uppercase.
@@ -25,7 +26,7 @@ export const unescapeNewlines = (input: string) => input.replace(/\\n/g, "\n");
  * @param input - The text to convert to uppercase.
  * @returns The input string in uppercase.
  */
-export const uppercase = (input: string) => input.toUpperCase();
+export const uppercase = (input: string) => input.trim().toUpperCase();
 
 /**
  * Converts all characters in the input string to lowercase.
@@ -33,7 +34,7 @@ export const uppercase = (input: string) => input.toUpperCase();
  * @param input - The text to convert to lowercase.
  * @returns The input string in lowercase.
  */
-export const lowercase = (input: string) => input.toLowerCase();
+export const lowercase = (input: string) => input.trim().toLowerCase();
 
 /**
  * Converts the input string to snake_case.
@@ -203,7 +204,7 @@ export const sarcasticSpongeBob = (input: string) => {
         }
     }
 
-    return result;
+    return result.trim();
 };
 
 /**
