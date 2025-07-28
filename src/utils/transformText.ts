@@ -47,26 +47,22 @@ export const lowercase = (input: string) => input.toLowerCase();
 export const snakeCase = (input: string) => {
     return (
         input
-            // Add spaces before capital letters
-            .replace(/([A-Z])/g, " $1")
+            // Add spaces before capital letters (for camelCase support)
+            .replace(/([a-z])([A-Z])/g, "$1 $2")
 
-            // Replace multiple hyphens with a single hyphen
-            .replace(/-+/g, "-")
+            // Remove all characters except letters, numbers, underscores, hyphens, and whitespace
+            .replace(/[^\w\s-]/g, "")
 
-            // Replace whitespace characters and hyphens with underscores
+            // Replace whitespace and hyphens with underscores
             .replace(/[\s-]+/g, "_")
 
-            // Remove all special characters except underscores
-            .replace(/[^\w\s]|_/g, "_")
-
-            // Replace multiple underscores with a single underscore
+            // Replace multiple underscores with a single one
             .replace(/_+/g, "_")
 
-            // Remove special characters from the beginning and end of the string
-            .replace(/^[^a-zA-Z0-9]+/, "")
-            .replace(/[^a-zA-Z0-9]+$/, "")
+            // Trim underscores from start and end
+            .replace(/^_+|_+$/g, "")
 
-            // Convert the string to lowercase
+            // Convert to lowercase
             .toLowerCase()
     );
 };
@@ -83,26 +79,23 @@ export const snakeCase = (input: string) => {
 export const kebabCase = (input: string) => {
     return (
         input
-            // Add spaces before capital letters
-            .replace(/([A-Z])/g, " $1")
+            // Add spaces before capital letters (for camelCase support)
+            .replace(/([a-z])([A-Z])/g, "$1 $2")
 
-            // Replace multiple hyphens with a single hyphen
-            .replace(/-+/g, "-")
+            // Remove all characters except letters, numbers, spaces, hyphens, and underscores
+            .replace(/[^\w\s-]/g, "")
 
-            // Replace whitespace characters and underscores with hyphens
+            // Replace spaces and underscores with hyphens
             .replace(/[\s_]+/g, "-")
 
-            // Remove all special characters except hyphens
-            .replace(/[^\w\s-]|_/g, "")
-
             // Replace multiple hyphens with a single hyphen
             .replace(/-+/g, "-")
 
-            // Remove hyphens from the beginning and end of the string
+            // Trim hyphens from start and end
             .replace(/^-+/, "")
             .replace(/-+$/, "")
 
-            // Convert the string to lowercase
+            // Convert to lowercase
             .toLowerCase()
     );
 };
@@ -116,20 +109,29 @@ export const kebabCase = (input: string) => {
  * @param input - The text to convert to PascalCase.
  * @returns The input string in PascalCase format.
  */
-export const pascalCase = (input: string) => {
+export const pascalCase = (input: string): string => {
     return (
         input
-            // Replace all whitespace, special characters, and underscores with a single space
-            .replace(/[^\w\s]|_+/g, " ")
-            .replace(/\s+/g, " ")
-            // Remove whitespace from beginning and end
+            // Insert spaces before capital letters preceded by lowercase letters or numbers
+            .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+
+            // Replace all separators with a space
+            .replace(/[_\-\s]+/g, " ")
+
+            // Remove any non-word characters
+            .replace(/[^\w\s]/g, "")
+
+            // Trim and split into words
             .trim()
-            // Capitalise the first letter of each word
-            .replace(/(?:^|\W|_)\w/g, (match) => {
-                return match.toUpperCase();
-            })
-            // Replace whitespace characters
-            .replace(/[\s]+/g, "")
+            .split(/\s+/)
+
+            // Capitalise first letter of each word
+            .map(
+                (word) =>
+                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            )
+            // Join to single string
+            .join("")
     );
 };
 
@@ -142,8 +144,18 @@ export const pascalCase = (input: string) => {
  * @returns The input string in camelCase format.
  */
 export const camelCase = (input: string) => {
-    // Use the pascalCase function to format the string
     const pascalText = pascalCase(input);
-    // Make the first character in a string lower case
-    return pascalText.charAt(0).toLowerCase() + pascalText.slice(1);
+
+    /**
+     * Match all sequences of:
+     * - Uppercase followed by lowercase letters (for example, "Response")
+     * - Consecutive uppercase letters (for example, "API", "OK")
+     */
+    const words = pascalText.match(/([A-Z]+(?=$|[A-Z][a-z])|[A-Z][a-z]*)/g);
+
+    if (!words) return pascalText;
+
+    return words
+        .map((word, index) => (index === 0 ? word.toLowerCase() : word))
+        .join("");
 };
