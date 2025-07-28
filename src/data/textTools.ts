@@ -4,6 +4,7 @@ import {
     kebabCase,
     lowercase,
     pascalCase,
+    sarcasticSpongeBob,
     snakeCase,
     unescapeNewlines,
     uppercase,
@@ -55,5 +56,10 @@ export const textTools = [
         buttonText: "camelCase",
         selectOption: "camelCase",
         transform: camelCase,
+    },
+    {
+        buttonText: "Sarcastic SpongeBob",
+        selectOption: "sarcasticSpongeBob",
+        transform: sarcasticSpongeBob,
     },
 ];

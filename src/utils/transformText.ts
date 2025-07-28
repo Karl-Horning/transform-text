@@ -159,3 +159,49 @@ export const camelCase = (input: string) => {
         .map((word, index) => (index === 0 ? word.toLowerCase() : word))
         .join("");
 };
+
+/**
+ * Randomly alternates the case of letters in the input string to mimic the sarcastic SpongeBob meme style.
+ *
+ * Maintains approximately a 50/50 split of uppercase and lowercase letters.
+ * Non-alphabetic characters are preserved in their original positions.
+ *
+ * @param input - The text to transform into sarcastic casing.
+ * @returns The input string with randomly alternating letter casing.
+ */
+export const sarcasticSpongeBob = (input: string) => {
+    const letters = input.replace(/[^a-zA-Z]/g, "").length;
+    let upperCount = 0;
+    let lowerCount = 0;
+    let result = "";
+
+    for (const char of input) {
+        if (!char.match(/[a-zA-Z]/)) {
+            result += char;
+            continue;
+        }
+
+        // Calculate max uppercase characters (around half)
+        const maxUpper = Math.ceil(letters / 2);
+        const maxLower = Math.floor(letters / 2);
+
+        let makeUpper;
+        if (upperCount >= maxUpper) {
+            makeUpper = false;
+        } else if (lowerCount >= maxLower) {
+            makeUpper = true;
+        } else {
+            makeUpper = Math.random() > 0.5;
+        }
+
+        if (makeUpper) {
+            result += char.toUpperCase();
+            upperCount++;
+        } else {
+            result += char.toLowerCase();
+            lowerCount++;
+        }
+    }
+
+    return result;
+};
