@@ -5,6 +5,7 @@ import ToolSelector from "./components/ToolSelector";
 import TextOutput from "./components/TextOutput";
 import CopyText from "./components/CopyText";
 import { textTools } from "./data/textTools";
+import Footer from "./components/Footer";
 
 /**
  * The main application component for transforming text.
@@ -97,7 +98,7 @@ function App() {
     };
 
     return (
-        <main className="container mx-auto py-6">
+        <main className="container mx-auto">
             <div className="mx-auto max-w-3xl px-6 py-8">
                 <Header />
                 <TextInput ref={inputRef} />
@@ -107,6 +108,7 @@ function App() {
                     onClick={handleCopy}
                     copyStatusMessage={copyStatusMessage}
                 />
+                <Footer />
             </div>
         </main>
     );
