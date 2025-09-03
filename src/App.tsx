@@ -1,11 +1,13 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./components/Header";
 import TextInput from "./components/TextInput";
 import ToolSelector from "./components/ToolSelector";
 import TextOutput from "./components/TextOutput";
 import CopyText from "./components/CopyText";
-import { textTools } from "./data/textTools";
 import Footer from "./components/Footer";
+import SkipLink from "./components/SkipLink";
+import { textTools } from "./data/textTools";
+import type { CopyStatus } from "./components/CopyText";
 
 /**
  * The main application component for transforming text.
@@ -30,13 +32,25 @@ function App() {
     const [result, setResult] = useState("");
 
     // State for storing the status of copying the result to the clipboard
-    const [copyStatusMessage, setCopyStatusMessage] =
-        useState<React.ReactNode>(null);
+    const [copyStatus, setCopyStatus] = useState<CopyStatus | null>(null);
 
     // Clear message after 3 seconds
-    const clearCopiedMessage = () => {
-        setTimeout(() => setCopyStatusMessage(""), 3000);
+    const clearTimerRef = useRef<number | null>(null);
+
+    const clearStatusSoon = () => {
+        if (clearTimerRef.current) window.clearTimeout(clearTimerRef.current);
+        clearTimerRef.current = window.setTimeout(
+            () => setCopyStatus(null),
+            3000
+        );
     };
+
+    useEffect(() => {
+        return () => {
+            if (clearTimerRef.current)
+                window.clearTimeout(clearTimerRef.current);
+        };
+    }, []);
 
     /**
      * Handles copying the transformed text to the clipboard.
@@ -46,36 +60,29 @@ function App() {
      * - Shows a success message if the text is successfully copied.
      * - Shows an error message if the clipboard operation fails.
      *
-     * All messages are styled to resemble Bootstrap alerts using Tailwind CSS,
-     * and are cleared after a short timeout using `clearCopiedMessage`.
+     * All messages are cleared after a short timeout using `clearStatusSoon`.
      */
     const handleCopy = async () => {
         if (!result) {
-            setCopyStatusMessage(
-                <p className="rounded-md border border-yellow-300 bg-yellow-100 px-4 py-2 text-yellow-800 shadow-sm">
-                    ⚠️ Nothing to copy
-                </p>
-            );
-            clearCopiedMessage();
+            setCopyStatus({ kind: "warning", text: "Nothing to copy" });
+            clearStatusSoon();
             return;
         }
 
         try {
             await navigator.clipboard.writeText(result);
-            setCopyStatusMessage(
-                <p className="rounded-md border border-green-300 bg-green-100 px-4 py-2 text-green-800 shadow-sm">
-                    ✅ Text copied to clipboard
-                </p>
-            );
+            setCopyStatus({
+                kind: "success",
+                text: "Text copied to clipboard",
+            });
         } catch (err) {
-            setCopyStatusMessage(
-                <p className="rounded-md border border-red-300 bg-red-100 px-4 py-2 text-red-800 shadow-sm">
-                    ❌ Unable to copy text to clipboard: {String(err)}
-                </p>
-            );
+            setCopyStatus({
+                kind: "error",
+                text: `Unable to copy text: ${String(err)}`,
+            });
         }
 
-        clearCopiedMessage();
+        clearStatusSoon();
     };
 
     /**
@@ -93,24 +100,27 @@ function App() {
             const transformed = selectedTool.transform(inputText);
             setResult(transformed);
         } else {
+            // Unknown tool identifier – safe no-op
             console.warn(`Unknown tool: ${tool}`);
         }
     };
 
     return (
-        <main className="container mx-auto">
-            <div className="mx-auto max-w-3xl px-6 py-8">
-                <Header />
-                <TextInput ref={inputRef} />
-                <ToolSelector onSelect={handleToolSelect} />
-                <TextOutput text={result} />
-                <CopyText
-                    onClick={handleCopy}
-                    copyStatusMessage={copyStatusMessage}
-                />
-                <Footer />
-            </div>
-        </main>
+        <>
+            <SkipLink />
+            <Header title="Transform Text" />
+
+            <main id="main-content" className="mx-auto max-w-6xl p-6 md:p-8">
+                <div className="mx-auto space-y-6">
+                    <TextInput ref={inputRef} />
+                    <ToolSelector onSelect={handleToolSelect} />
+                    <TextOutput text={result} />
+                    <CopyText onClick={handleCopy} status={copyStatus} />
+                </div>
+            </main>
+
+            <Footer />
+        </>
     );
 }
 
