@@ -25,7 +25,7 @@ export default function ToolSelector({ onSelect }: ToolSelectorProps) {
         >
             <h3
                 id="tool-selector-heading"
-                className="text-lg font-semibold text-slate-900 dark:text-slate-100"
+                className="block text-sm font-medium text-slate-700 dark:text-slate-200"
             >
                 Step 2: Select a formatting style or text action
             </h3>
