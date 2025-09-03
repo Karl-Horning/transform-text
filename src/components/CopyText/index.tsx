@@ -1,26 +1,56 @@
-import type React from "react";
+export type CopyStatus =
+    | { kind: "success"; text: string }
+    | { kind: "warning"; text: string }
+    | { kind: "error"; text: string };
 
 type CopyTextProps = {
     onClick: () => void;
-    copyStatusMessage: React.ReactNode;
+    /** Optional short status shown under the button (announced via aria-live). */
+    status?: CopyStatus | null;
 };
 
 /**
- * Renders a button section that allows users to copy the processed output text.
+ * Final step: copy the formatted text.
  *
- * This is typically the final step in the UI flow, enabling users to
- * copy the result to their clipboard. The component expects an `onClick`
- * handler to be passed from the parent, which will handle the clipboard logic.
+ * Renders a primary action button and, when provided, an optional status pill
+ * (with emoji) that reflects the outcome of the copy action. The status is
+ * placed in a polite live region so screen readers announce updates without
+ * stealing focus.
  *
  * @param props - Props for the CopyText component.
- * @param props.onClick - Callback fired when the "Copy Formatted Text" button is clicked.
- * @param props.copyStatusMessage - A short status message rendered under the button (for example, "Copied!").
- * @returns A section containing the clipboard copy button and a live status message.
+ * @param props.onClick - Callback fired when the "Copy Formatted Text" button is clicked. Implement clipboard logic in the parent.
+ * @param props.status - Optional status descriptor controlling the pill's colour and label (`"success"`, `"warning"`, or `"error"`). Omit or pass `null` to hide the status.
+ * @returns A section containing the clipboard copy button and, if provided, a live status message.
+ * @remarks
+ * - Status colours align with the app's pass/warn/fail scheme (emerald/amber/rose).
+ * - The parent component clears the status after a short delay.
  */
-export default function CopyText({
-    onClick,
-    copyStatusMessage,
-}: CopyTextProps) {
+export default function CopyText({ onClick, status }: CopyTextProps) {
+    // Map status kinds to the same colour logic as StatusBadge (emerald/amber/rose)
+    const variant =
+        status?.kind === "success"
+            ? {
+                  emoji: "✅",
+                  bg: "bg-emerald-100 dark:bg-emerald-900/30",
+                  text: "text-emerald-800 dark:text-emerald-300",
+                  border: "border-emerald-200 dark:border-emerald-800",
+              }
+            : status?.kind === "warning"
+              ? {
+                    emoji: "⚠️",
+                    bg: "bg-amber-100 dark:bg-amber-900/30",
+                    text: "text-amber-900 dark:text-amber-300",
+                    border: "border-amber-200 dark:border-amber-800",
+                }
+              : status?.kind === "error"
+                ? {
+                      emoji: "❌",
+                      bg: "bg-rose-100 dark:bg-rose-900/30",
+                      text: "text-rose-800 dark:text-rose-300",
+                      border: "border-rose-200 dark:border-rose-800",
+                  }
+                : null;
+
     return (
         <section
             id="copyButton"
@@ -46,14 +76,26 @@ export default function CopyText({
                 </button>
             </div>
 
-            {/* Live status for screen readers + subtle text for sighted users */}
-            <div
-                role="status"
-                aria-live="polite"
-                className="text-sm text-slate-600 dark:text-slate-300"
-            >
-                {copyStatusMessage}
-            </div>
+            {/* Live status message (styled like a pill) */}
+            {variant && status?.text ? (
+                <div role="status" aria-live="polite">
+                    <span
+                        className={[
+                            "inline-flex w-full items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium shadow-sm",
+                            variant.bg,
+                            variant.text,
+                            variant.border,
+                        ].join(" ")}
+                    >
+                        <span aria-hidden="true">{variant.emoji}</span>
+                        <span className="whitespace-pre-line">
+                            {status.text}
+                        </span>
+                    </span>
+                    {/* Screen-reader helper */}
+                    <span className="sr-only"> Status: {status.text}</span>
+                </div>
+            ) : null}
         </section>
     );
 }
