@@ -13,16 +13,25 @@ import { forwardRef } from "react";
  */
 const TextInput = forwardRef<HTMLTextAreaElement>((_, ref) => {
     return (
-        <section id="textInput" className="mb-6">
-            <label htmlFor="inputTextArea" className="mb-4 block font-medium">
+        <section
+            id="textInput"
+            className="space-y-4 rounded-2xl border border-slate-200 bg-white/60 p-4 shadow-sm backdrop-blur-sm sm:p-5 dark:border-slate-700 dark:bg-slate-800/60"
+            aria-labelledby="textInput-label"
+            role="region"
+        >
+            <label
+                id="textInput-label"
+                htmlFor="inputTextArea"
+                className="block text-sm font-medium text-slate-700 dark:text-slate-200"
+            >
                 Step 1: Enter or paste your text below
             </label>
             <textarea
                 id="inputTextArea"
                 ref={ref}
                 placeholder="Enter your original text here..."
-                className="min-h-[15rem] w-full rounded border border-gray-700 p-2 font-mono"
-            ></textarea>
+                className="min-h-[15rem] w-full resize-y rounded-lg border border-slate-300 bg-white/70 px-3 py-2 font-mono text-sm leading-relaxed shadow-sm placeholder:text-slate-400 focus:ring-2 focus:ring-slate-400 focus:outline-none dark:border-slate-600 dark:bg-slate-800/70 dark:focus:ring-slate-500"
+            />
         </section>
     );
 });
