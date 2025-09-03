@@ -59,14 +59,7 @@ export default function Footer() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={label}
-                            className={[
-                                "text-slate-600 hover:text-slate-900",
-                                "dark:text-slate-400 dark:hover:text-slate-200",
-                                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2",
-                                "ring-offset-white dark:ring-offset-slate-900",
-                                "transition-colors motion-safe:duration-150",
-                                "text-lg",
-                            ].join(" ")}
+                            className="text-lg text-slate-600 ring-offset-white transition-colors hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 motion-safe:duration-150 dark:text-slate-400 dark:ring-offset-slate-900 dark:hover:text-slate-200"
                         >
                             {icon}
                         </a>

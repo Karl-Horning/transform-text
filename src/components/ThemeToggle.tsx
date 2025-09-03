@@ -69,14 +69,7 @@ export default function ThemeToggle() {
             aria-pressed={isDark}
             aria-label={label}
             title={label}
-            className={[
-                "cursor-pointer rounded-md border px-3 py-1.5 text-sm",
-                "border-slate-300 bg-white/70 text-slate-800 shadow-sm hover:bg-slate-200",
-                "dark:border-slate-600 dark:bg-slate-800/70 dark:text-slate-100 dark:hover:bg-slate-600",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2",
-                "ring-offset-white dark:ring-offset-slate-900",
-                "transition-colors motion-safe:duration-150",
-            ].join(" ")}
+            className="cursor-pointer rounded-md border border-slate-300 bg-white/70 px-3 py-1.5 text-sm text-slate-800 shadow-sm ring-offset-white transition-colors hover:bg-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 motion-safe:duration-150 dark:border-slate-600 dark:bg-slate-800/70 dark:text-slate-100 dark:ring-offset-slate-900 dark:hover:bg-slate-600"
         >
             {isDark ? "Light mode" : "Dark mode"}
         </button>
