@@ -6,6 +6,7 @@ import TextOutput from "./components/TextOutput";
 import CopyText from "./components/CopyText";
 import { textTools } from "./data/textTools";
 import Footer from "./components/Footer";
+import SkipLink from "./components/SkipLink";
 
 /**
  * The main application component for transforming text.
@@ -98,19 +99,22 @@ function App() {
     };
 
     return (
-        <main className="container mx-auto">
-            <div className="mx-auto max-w-3xl px-6 py-8">
-                <Header />
-                <TextInput ref={inputRef} />
-                <ToolSelector onSelect={handleToolSelect} />
-                <TextOutput text={result} />
-                <CopyText
-                    onClick={handleCopy}
-                    copyStatusMessage={copyStatusMessage}
-                />
-                <Footer />
-            </div>
-        </main>
+        <>
+            <SkipLink />
+            <Header title="Transform Text" />
+            <main id="main-content" className="container mx-auto">
+                <div className="mx-auto max-w-3xl px-6 py-8">
+                    <TextInput ref={inputRef} />
+                    <ToolSelector onSelect={handleToolSelect} />
+                    <TextOutput text={result} />
+                    <CopyText
+                        onClick={handleCopy}
+                        copyStatusMessage={copyStatusMessage}
+                    />
+                </div>
+            </main>
+            <Footer />
+        </>
     );
 }
 
