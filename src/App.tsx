@@ -111,7 +111,7 @@ function App() {
             <Header title="Transform Text" />
 
             <main id="main-content" className="mx-auto max-w-6xl p-6 md:p-8">
-                <div className="mx-auto max-w-3xl space-y-6">
+                <div className="mx-auto space-y-6">
                     <TextInput ref={inputRef} />
                     <ToolSelector onSelect={handleToolSelect} />
                     <TextOutput text={result} />
