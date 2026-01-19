@@ -1,43 +1,43 @@
-# 🔤 Transform Text
+# Transform Text
 
 A lightweight text transformation tool for developers, writers, and curious minds. Escape newlines, change case formats, and quickly copy results to your clipboard.
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 
-- [🔤 Transform Text](#-transform-text)
-  - [📖 Table of Contents](#-table-of-contents)
-  - [🤓 Overview](#-overview)
-  - [📸 Demo](#-demo)
-  - [🛠️ Tech Stack](#️-tech-stack)
-  - [📦 Installation](#-installation)
-  - [🚀 Scripts](#-scripts)
-  - [📁 Project Structure](#-project-structure)
-  - [📐 Code Style](#-code-style)
-  - [🔍 Tests](#-tests)
-  - [📌 To Do](#-to-do)
-  - [🧪 Known Issues](#-known-issues)
-  - [🤝 Contributing](#-contributing)
-  - [📄 Licence](#-licence)
-  - [🙋 FAQ](#-faq)
-  - [👤 Author](#-author)
+- [Transform Text](#transform-text)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Demo](#demo)
+  - [Tech Stack](#tech-stack)
+  - [Installation](#installation)
+  - [Scripts](#scripts)
+  - [Project Structure](#project-structure)
+  - [Code Style](#code-style)
+  - [Tests](#tests)
+  - [To Do](#to-do)
+  - [Known Issues](#known-issues)
+  - [Contributing](#contributing)
+  - [Licence](#licence)
+  - [FAQ](#faq)
+  - [Author](#author)
 
 ---
 
-## 🤓 Overview
+## Overview
 
 **Transform Text** is a small web app built with React and Tailwind CSS. It lets users apply various string manipulations like escaping newlines, switching between case styles (for example, camelCase, snake_case), and copying the output. Ideal for developers working with data, APIs, or code formatting.
 
 ---
 
-## 📸 Demo
+## Demo
 
 Try it live: [karlhorning.dev/transform-text/](https://www.karlhorning.dev/transform-text/)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: React (with Vite)
 - **Language**: JavaScript (ES Modules)
@@ -46,7 +46,7 @@ Try it live: [karlhorning.dev/transform-text/](https://www.karlhorning.dev/trans
 
 ---
 
-## 📦 Installation
+## Installation
 
 ```bash
 git clone https://github.com/Karl-Horning/transform-text.git
@@ -57,7 +57,7 @@ npm run dev
 
 ---
 
-## 🚀 Scripts
+## Scripts
 
 | Command                | Description                   |
 | ---------------------- | ----------------------------- |
@@ -71,7 +71,7 @@ npm run dev
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
 src/
@@ -84,7 +84,7 @@ src/
 
 ---
 
-## 📐 Code Style
+## Code Style
 
 This project follows:
 
@@ -100,7 +100,7 @@ This project follows:
 
 ---
 
-## 🔍 Tests
+## Tests
 
 Tests are written using **Jest** alongside **React Testing Library** to ensure both the core transformation logic and user interface components behave as expected.
 
@@ -124,7 +124,7 @@ npm run test:watch
 
 ---
 
-## 📌 To Do
+## To Do
 
 - [x] Escape/unescape newlines
 - [x] Uppercase/lowercase tools
@@ -140,7 +140,7 @@ npm run test:watch
 
 ---
 
-## 🧪 Known Issues
+## Known Issues
 
 - No input validation yet (for example, empty input fields are allowed)
 - The `Copy Output` button is always active
@@ -149,19 +149,19 @@ npm run test:watch
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests are welcome! For major changes, open an issue first to discuss what you'd like to add or improve.
 
 ---
 
-## 📄 Licence
+## Licence
 
 MIT © 2025 Karl Horning
 
 ---
 
-## 🙋 FAQ
+## FAQ
 
 **Q: Can I use this as a base for my own string utility tool?**
 A: Absolutely — just include credit if you fork the structure or UI.
@@ -171,6 +171,6 @@ A: Different APIs, languages, and platforms prefer different naming conventions.
 
 ---
 
-## 👤 Author
+## Author
 
 Made with ❤️ by [Karl Horning](https://github.com/Karl-Horning)
