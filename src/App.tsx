@@ -6,7 +6,7 @@ import TextOutput from "./components/TextOutput";
 import CopyText from "./components/CopyText";
 import Footer from "./components/Footer";
 import SkipLink from "./components/SkipLink";
-import { textTools } from "./data/textTools";
+import { textTools } from "./data/transformationConfig.ts";
 import type { CopyStatus } from "./components/CopyText";
 
 /**
