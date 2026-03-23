@@ -1,40 +1,29 @@
 # Transform Text
 
-A lightweight text transformation tool for developers, writers, and curious minds. Escape newlines, change case formats, and quickly copy results to your clipboard.
+A lightweight text transformation tool for developers. Escape newlines, switch between case formats, and copy results to your clipboard.
+
+- **Live demo**: [karlhorning.dev/transform-text](https://www.karlhorning.dev/transform-text/)
+- **Author**: [Karl Horning](https://github.com/Karl-Horning)
+- **Licence**: MIT
 
 ## Table of Contents
 
-- [Transform Text](#transform-text)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Demo](#demo)
-  - [Tech Stack](#tech-stack)
-  - [Installation](#installation)
-  - [Scripts](#scripts)
-  - [Project Structure](#project-structure)
-  - [Code Style](#code-style)
-  - [Tests](#tests)
-  - [To Do](#to-do)
-  - [Known Issues](#known-issues)
-  - [Contributing](#contributing)
-  - [Licence](#licence)
-  - [FAQ](#faq)
-  - [Author](#author)
-
-## Overview
-
-**Transform Text** is a small web app built with React and Tailwind CSS. It lets users apply various string manipulations like escaping newlines, switching between case styles (for example, camelCase, snake_case), and copying the output. Ideal for developers working with data, APIs, or code formatting.
-
-## Demo
-
-Try it live: [karlhorning.dev/transform-text/](https://www.karlhorning.dev/transform-text/)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Scripts](#scripts)
+- [Transformations](#transformations)
+- [Tests](#tests)
+- [Contributing](#contributing)
 
 ## Tech Stack
 
 - **Framework**: React (with Vite)
-- **Language**: JavaScript (ES Modules)
+- **Language**: TypeScript
 - **Styling**: Tailwind CSS
+- **Testing**: Jest
 - **Tooling**: ESLint, Prettier
+
+[↑ Back to top](#transform-text)
 
 ## Installation
 
@@ -44,6 +33,8 @@ cd transform-text
 npm install
 npm run dev
 ```
+
+[↑ Back to top](#transform-text)
 
 ## Scripts
 
@@ -57,90 +48,32 @@ npm run dev
 | `npm run test:watch`   | Run tests in watch mode       |
 | `npm run test:verbose` | Run tests with verbose output |
 
-## Project Structure
+[↑ Back to top](#transform-text)
 
-```bash
-src/
-├── components/         # UI components (TextInput, ToolSelector, etc.)
-├── data/               # Tool definitions
-├── utils/              # Pure transformation logic
-├── App.jsx             # Main app component
-├── main.jsx            # Entry point
-```
+## Transformations
 
-## Code Style
+- Escape / Unescape Newlines
+- Uppercase / Lowercase
+- snake_case, kebab-case, PascalCase, camelCase
+- Sentence case, MLA Title Case, AP Title Case
+- Sarcastic SpongeBob
+- Trim Whitespace
 
-This project follows:
-
-- ESLint (`eslint:recommended`)
-- Prettier with Tailwind plugin
-- [Conventional Commits](https://www.conventionalcommits.org/) for Git messages:
-
-  - `feat`: New feature
-  - `fix`: Bug fix
-  - `refactor`: Code cleanup
-  - `a11y`: Accessibility improvements
-  - `ux`: UX/UI tweaks
+[↑ Back to top](#transform-text)
 
 ## Tests
 
-Tests are written using **Jest** alongside **React Testing Library** to ensure both the core transformation logic and user interface components behave as expected.
-
-You'll find tests covering:
-
-- Pure utility functions for text transformations
-- React component rendering and interaction
-- UI behaviours such as the copy-to-clipboard button, including success and error states
-
-Run all tests with:
+Unit tests cover all transformation functions, including edge cases for empty strings, whitespace-only input, and strings containing numbers.
 
 ```bash
 npm run test
+npm run test:watch  # watch mode
 ```
 
-For continuous development, use watch mode:
-
-```bash
-npm run test:watch
-```
-
-## To Do
-
-- [x] Escape/unescape newlines
-- [x] Uppercase/lowercase tools
-- [x] Copy output to clipboard
-- [x] Add support for:
-
-  - [x] `camelCase`
-  - [x] `PascalCase`
-  - [x] `snake_case`
-  - [x] `kebab-case`
-- [x] Add tests
-- [x] Deploy live demo
-
-## Known Issues
-
-- No input validation yet (for example, empty input fields are allowed)
-- The `Copy Output` button is always active
-- `Sentence Case` converts proper nouns to lower case
-- `MLA Title Case` and `AP Title Case` convert PascalCase words like "JavaScript" to "Javascript"
+[↑ Back to top](#transform-text)
 
 ## Contributing
 
-Pull requests are welcome! For major changes, open an issue first to discuss what you'd like to add or improve.
+Open an issue before submitting a pull request for any significant changes.
 
-## Licence
-
-MIT © 2025 Karl Horning
-
-## FAQ
-
-**Q: Can I use this as a base for my own string utility tool?**
-A: Absolutely — just include credit if you fork the structure or UI.
-
-**Q: Why are there multiple case tools?**
-A: Different APIs, languages, and platforms prefer different naming conventions. This tool helps you switch between them quickly.
-
-## Author
-
-Made with ❤️ by [Karl Horning](https://github.com/Karl-Horning)
+[↑ Back to top](#transform-text)
