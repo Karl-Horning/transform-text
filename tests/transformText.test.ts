@@ -1,4 +1,5 @@
 import {
+    capitalise,
     escapeNewlines,
     unescapeNewlines,
     uppercase,
@@ -14,6 +15,12 @@ import {
 } from "../src/utils/transformText";
 
 describe("Text Transformation Utilities", () => {
+    test("capitalise uppercases first letter and lowercases the rest", () => {
+        expect(capitalise("hello")).toBe("Hello");
+        expect(capitalise("HELLO")).toBe("Hello");
+        expect(capitalise("hELLO")).toBe("Hello");
+    });
+
     test("escapeNewlines replaces newlines with \\n", () => {
         expect(escapeNewlines("Hello\nWorld\n")).toBe("Hello\\nWorld");
         expect(escapeNewlines("Line 1\r\nLine 2")).toBe("Line 1\\nLine 2");

@@ -269,7 +269,7 @@ export const titleCaseMla = (input: string): string => {
  * @param word - The word to capitalise.
  * @returns The capitalised word.
  */
-const capitalise = (word: string): string => {
+export const capitalise = (word: string): string => {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 };
 
