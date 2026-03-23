@@ -19,10 +19,8 @@ describe("Text Transformation Utilities", () => {
         expect(escapeNewlines("Line 1\r\nLine 2")).toBe("Line 1\\nLine 2");
     });
 
-    test("unescapeNewlines replaces \n with actual newlines", () => {
-        expect(unescapeNewlines("Hello\nWorld")).toBe(
-            "Hello\nWorld".replace(/\\n/g, "\n")
-        );
+    test("unescapeNewlines replaces \\n with actual newlines", () => {
+        expect(unescapeNewlines("Hello\\nWorld")).toBe("Hello\nWorld");
     });
 
     test("uppercase converts to uppercase", () => {
