@@ -13,7 +13,7 @@ import {
     titleCaseAP,
     sentenceCase,
     trimWhitespace,
-} from "../src/utils/transformText";
+} from "../transformText";
 
 describe("Text Transformation Utilities", () => {
     test("trimWhitespace removes leading, trailing, and excess internal spaces", () => {
