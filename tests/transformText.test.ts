@@ -12,9 +12,17 @@ import {
     titleCaseMla,
     titleCaseAP,
     sentenceCase,
+    trimWhitespace,
 } from "../src/utils/transformText";
 
 describe("Text Transformation Utilities", () => {
+    test("trimWhitespace removes leading, trailing, and excess internal spaces", () => {
+        expect(trimWhitespace("  hello  ")).toBe("hello");
+        expect(trimWhitespace("hello   world")).toBe("hello world");
+        expect(trimWhitespace("  hello   world  ")).toBe("hello world");
+        expect(trimWhitespace("")).toBe("");
+    });
+
     test("capitalise uppercases first letter and lowercases the rest", () => {
         expect(capitalise("hello")).toBe("Hello");
         expect(capitalise("HELLO")).toBe("Hello");

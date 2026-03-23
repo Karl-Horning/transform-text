@@ -1,4 +1,14 @@
 /**
+ * Removes leading and trailing whitespace and collapses
+ * internal consecutive spaces to a single space.
+ *
+ * @param input - The text to trim.
+ * @returns The trimmed string.
+ */
+export const trimWhitespace = (input: string): string =>
+    input.trim().replace(/\s+/g, " ");
+
+/**
  * Replaces all newline characters in the input string with the literal string `\n`.
  *
  * This is useful for escaping newlines in text where newlines need to be represented as `\n`.
