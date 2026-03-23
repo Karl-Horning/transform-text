@@ -79,3 +79,34 @@ describe("Text Transformation Utilities", () => {
         expect(sentenceCase("HELLO WORLD")).toBe("Hello world");
     });
 });
+
+describe("Edge cases", () => {
+    test("all functions handle empty strings", () => {
+        expect(escapeNewlines("")).toBe("");
+        expect(unescapeNewlines("")).toBe("");
+        expect(uppercase("")).toBe("");
+        expect(lowercase("")).toBe("");
+        expect(snakeCase("")).toBe("");
+        expect(kebabCase("")).toBe("");
+        expect(pascalCase("")).toBe("");
+        expect(camelCase("")).toBe("");
+        expect(titleCaseMla("")).toBe("");
+        expect(titleCaseAP("")).toBe("");
+        expect(sentenceCase("")).toBe("");
+    });
+
+    test("all functions handle whitespace-only strings", () => {
+        expect(uppercase("   ")).toBe("");
+        expect(lowercase("   ")).toBe("");
+        expect(snakeCase("   ")).toBe("");
+        expect(kebabCase("   ")).toBe("");
+        expect(sentenceCase("   ")).toBe("");
+    });
+
+    test("all functions handle strings with numbers", () => {
+        expect(snakeCase("hello 123 world")).toBe("hello_123_world");
+        expect(kebabCase("hello 123 world")).toBe("hello-123-world");
+        expect(pascalCase("hello 123 world")).toBe("Hello123World");
+        expect(camelCase("hello 123 world")).toBe("hello123World");
+    });
+});
