@@ -8,7 +8,7 @@ import {
     pascalCase,
     camelCase,
     sarcasticSpongeBob,
-    TitleCaseMla,
+    titleCaseMla,
     titleCaseAP,
     sentenceCase,
 } from "../src/utils/transformText";
@@ -56,9 +56,9 @@ describe("Text Transformation Utilities", () => {
         expect(output).not.toBe(input); // Should be altered, but output is random
     });
 
-    test("TitleCaseMla formats MLA style titles", () => {
+    test("titleCaseMla formats MLA style titles", () => {
         expect(
-            TitleCaseMla("the quick brown fox jumps over the lazy dog")
+            titleCaseMla("the quick brown fox jumps over the lazy dog")
         ).toBe("The Quick Brown Fox Jumps over the Lazy Dog");
     });
 
