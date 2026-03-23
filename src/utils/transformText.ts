@@ -217,7 +217,7 @@ export const sarcasticSpongeBob = (input: string) => {
  * @param input - The text to convert to Chicago/MLA-style title case.
  * @returns The input string in properly formatted title case.
  */
-export const TitleCaseMla = (input: string): string => {
+export const titleCaseMla = (input: string): string => {
     const lowercaseWords = new Set([
         "a",
         "an",
