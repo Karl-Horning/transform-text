@@ -6,7 +6,7 @@
  * @param input - The text to escape newlines in.
  * @returns The input string with newlines replaced by `\n`.
  */
-export const escapeNewlines = (input: string) =>
+export const escapeNewlines = (input: string): string =>
     input.trim().replace(/[\r\n\u0085\u2028\u2029]+/g, "\\n");
 
 /**
@@ -17,7 +17,7 @@ export const escapeNewlines = (input: string) =>
  * @param input - The text to unescape newlines in.
  * @returns The input string with `\n` sequences replaced by actual newlines.
  */
-export const unescapeNewlines = (input: string) =>
+export const unescapeNewlines = (input: string): string =>
     input.trim().replace(/\\n/g, "\n");
 
 /**
@@ -26,7 +26,7 @@ export const unescapeNewlines = (input: string) =>
  * @param input - The text to convert to uppercase.
  * @returns The input string in uppercase.
  */
-export const uppercase = (input: string) => input.trim().toUpperCase();
+export const uppercase = (input: string): string => input.trim().toUpperCase();
 
 /**
  * Converts all characters in the input string to lowercase.
@@ -34,7 +34,7 @@ export const uppercase = (input: string) => input.trim().toUpperCase();
  * @param input - The text to convert to lowercase.
  * @returns The input string in lowercase.
  */
-export const lowercase = (input: string) => input.trim().toLowerCase();
+export const lowercase = (input: string): string => input.trim().toLowerCase();
 
 /**
  * Converts the input string to snake_case.
@@ -45,7 +45,7 @@ export const lowercase = (input: string) => input.trim().toLowerCase();
  * @param input - The text to convert to snake_case.
  * @returns The input string in snake_case format.
  */
-export const snakeCase = (input: string) => {
+export const snakeCase = (input: string): string => {
     return (
         input
             // Add spaces before capital letters (for camelCase support)
@@ -77,7 +77,7 @@ export const snakeCase = (input: string) => {
  * @param input - The text to convert to kebab-case.
  * @returns The input string in kebab-case format.
  */
-export const kebabCase = (input: string) => {
+export const kebabCase = (input: string): string => {
     return (
         input
             // Add spaces before capital letters (for camelCase support)
@@ -144,7 +144,7 @@ export const pascalCase = (input: string): string => {
  * @param input - The text to convert to camelCase.
  * @returns The input string in camelCase format.
  */
-export const camelCase = (input: string) => {
+export const camelCase = (input: string): string => {
     const pascalText = pascalCase(input);
 
     /**
@@ -170,7 +170,7 @@ export const camelCase = (input: string) => {
  * @param input - The text to transform into sarcastic casing.
  * @returns The input string with randomly alternating letter casing.
  */
-export const sarcasticSpongeBob = (input: string) => {
+export const sarcasticSpongeBob = (input: string): string => {
     const letters = input.replace(/[^a-zA-Z]/g, "").length;
     let upperCount = 0;
     let lowerCount = 0;
