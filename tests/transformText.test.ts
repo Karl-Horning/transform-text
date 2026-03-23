@@ -50,8 +50,10 @@ describe("Text Transformation Utilities", () => {
     test("sarcasticSpongeBob returns same chars with mixed case", () => {
         const input = "hello world";
         const output = sarcasticSpongeBob(input);
+        expect(output.length).toBe(input.length);
         expect(output.toLowerCase()).toBe(input.toLowerCase());
-        expect(output).not.toBe(input); // Should be altered, but output is random
+        expect(output).toMatch(/[A-Z]/);
+        expect(output).toMatch(/[a-z]/);
     });
 
     test("titleCaseMla formats MLA style titles", () => {
