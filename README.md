@@ -2,8 +2,6 @@
 
 A lightweight text transformation tool for developers, writers, and curious minds. Escape newlines, change case formats, and quickly copy results to your clipboard.
 
----
-
 ## Table of Contents
 
 - [Transform Text](#transform-text)
@@ -23,19 +21,13 @@ A lightweight text transformation tool for developers, writers, and curious mind
   - [FAQ](#faq)
   - [Author](#author)
 
----
-
 ## Overview
 
 **Transform Text** is a small web app built with React and Tailwind CSS. It lets users apply various string manipulations like escaping newlines, switching between case styles (for example, camelCase, snake_case), and copying the output. Ideal for developers working with data, APIs, or code formatting.
 
----
-
 ## Demo
 
 Try it live: [karlhorning.dev/transform-text/](https://www.karlhorning.dev/transform-text/)
-
----
 
 ## Tech Stack
 
@@ -43,8 +35,6 @@ Try it live: [karlhorning.dev/transform-text/](https://www.karlhorning.dev/trans
 - **Language**: JavaScript (ES Modules)
 - **Styling**: Tailwind CSS
 - **Tooling**: ESLint, Prettier
-
----
 
 ## Installation
 
@@ -54,8 +44,6 @@ cd transform-text
 npm install
 npm run dev
 ```
-
----
 
 ## Scripts
 
@@ -69,8 +57,6 @@ npm run dev
 | `npm run test:watch`   | Run tests in watch mode       |
 | `npm run test:verbose` | Run tests with verbose output |
 
----
-
 ## Project Structure
 
 ```bash
@@ -81,8 +67,6 @@ src/
 ├── App.jsx             # Main app component
 ├── main.jsx            # Entry point
 ```
-
----
 
 ## Code Style
 
@@ -97,8 +81,6 @@ This project follows:
   - `refactor`: Code cleanup
   - `a11y`: Accessibility improvements
   - `ux`: UX/UI tweaks
-
----
 
 ## Tests
 
@@ -122,8 +104,6 @@ For continuous development, use watch mode:
 npm run test:watch
 ```
 
----
-
 ## To Do
 
 - [x] Escape/unescape newlines
@@ -138,8 +118,6 @@ npm run test:watch
 - [x] Add tests
 - [x] Deploy live demo
 
----
-
 ## Known Issues
 
 - No input validation yet (for example, empty input fields are allowed)
@@ -147,19 +125,13 @@ npm run test:watch
 - `Sentence Case` converts proper nouns to lower case
 - `MLA Title Case` and `AP Title Case` convert PascalCase words like "JavaScript" to "Javascript"
 
----
-
 ## Contributing
 
 Pull requests are welcome! For major changes, open an issue first to discuss what you'd like to add or improve.
 
----
-
 ## Licence
 
 MIT © 2025 Karl Horning
-
----
 
 ## FAQ
 
@@ -168,8 +140,6 @@ A: Absolutely — just include credit if you fork the structure or UI.
 
 **Q: Why are there multiple case tools?**
 A: Different APIs, languages, and platforms prefer different naming conventions. This tool helps you switch between them quickly.
-
----
 
 ## Author
 
