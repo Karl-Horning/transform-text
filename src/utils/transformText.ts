@@ -152,7 +152,7 @@ export const camelCase = (input: string): string => {
      * - Uppercase followed by lowercase letters (for example, "Response")
      * - Consecutive uppercase letters (for example, "API", "OK")
      */
-    const words = pascalText.match(/([A-Z]+(?=$|[A-Z][a-z])|[A-Z][a-z]*)/g);
+    const words = pascalText.match(/([A-Z][a-z0-9]*|[A-Z]+(?=[A-Z]|$))/g);
 
     if (!words) return pascalText;
 
