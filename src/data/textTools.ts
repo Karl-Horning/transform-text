@@ -11,7 +11,7 @@ import {
     titleCaseMla,
     unescapeNewlines,
     uppercase,
-} from "../utils/transformText";
+} from "../utils/transformations";
 
 /**
  * A list of available text transformation tools.
