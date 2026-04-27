@@ -5,6 +5,8 @@
         { "path": "./tsconfig.node.json" }
     ],
     "compilerOptions": {
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
         "jsx": "react-jsx",
         "esModuleInterop": true,
         "types": ["jest", "@testing-library/jest-dom"]
