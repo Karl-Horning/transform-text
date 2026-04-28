@@ -74,9 +74,9 @@ Open [http://localhost:5173](http://localhost:5173).
 | PascalCase | `HelloWorld` |
 | camelCase | `helloWorld` |
 | Sentence case | `Hello world` |
-| Start Case | `The Quick Brown Fox` |
-| MLA Title Case | `The Quick Brown Fox` |
-| AP Title Case | `The Quick Brown Fox` |
+| Start Case | `Tools Of The Trade` |
+| MLA Title Case | `Tools of the Trade` |
+| AP Title Case | `Tools Of the Trade` |
 | Sarcastic SpongeBob | `hElLo WoRlD` |
 | Alternating Case | `HeLlO wOrLd` |
 | Trim Whitespace | `hello world` |
