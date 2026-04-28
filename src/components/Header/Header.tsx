@@ -9,10 +9,12 @@ import styles from "./Header.module.css";
 export function Header() {
     return (
         <header className={styles.header}>
-            <h1 className={styles.title}>{SITE_TITLE}</h1>
-            <span className={styles.tagline} aria-hidden="true">
-                {SITE_TAGLINE}
-            </span>
+            <div className={styles.inner}>
+                <h1 className={styles.title}>{SITE_TITLE}</h1>
+                <span className={styles.tagline} aria-hidden="true">
+                    {SITE_TAGLINE}
+                </span>
+            </div>
         </header>
     );
 }

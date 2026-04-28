@@ -1,34 +1,6 @@
 <!doctype html>
-<html lang="en" class="light">
+<html lang="en">
     <head>
-        <!-- 1) Set the theme class ASAP (blocking, no async/defer) -->
-        <script>
-            (function () {
-                try {
-                    const stored = localStorage.getItem("theme");
-                    const prefersDark = window.matchMedia(
-                        "(prefers-color-scheme: dark)"
-                    ).matches;
-                    const dark = stored ? stored === "dark" : prefersDark;
-                    const c = document.documentElement.classList;
-                    if (dark) c.add("dark");
-                    else c.remove("dark");
-                } catch {}
-            })();
-        </script>
-
-        <!-- 2) Minimal fallback colours to prevent flash before Tailwind loads -->
-        <style>
-            html.dark body {
-                background: #0f172a;
-                color: #f1f5f9;
-            }
-            html:not(.dark) body {
-                background: #f8fafc;
-                color: #0f172a;
-            }
-        </style>
-
         <meta charset="UTF-8" />
         <link rel="icon" href="icons/icon-192.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,9 +14,7 @@
         <!-- manifest path relative to this page (resolves under /number-cards-pwa/) -->
         <link rel="manifest" href="manifest.webmanifest" />
     </head>
-    <body
-        class="night:bg-night-900 night:text-night-100 min-h-screen bg-white text-black transition-colors duration-300 dark:bg-gray-900 dark:text-white"
-    >
+    <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
     </body>

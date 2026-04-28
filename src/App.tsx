@@ -1,42 +1,27 @@
-import { useEffect, useRef, useState } from "react";
+/**
+ * @fileoverview Root application component.
+ */
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "./components/Header/Header";
-import TextInput from "./components/TextInput";
-import ToolSelector from "./components/ToolSelector";
-import TextOutput from "./components/TextOutput";
-import CopyText from "./components/CopyText";
+import { InputPanel } from "./components/InputPanel/InputPanel";
+import { OutputPanel } from "./components/OutputPanel/OutputPanel";
+import type { CopyStatus } from "./components/OutputPanel/OutputPanel";
 import SkipLink from "./components/SkipLink";
-import { textTools } from "./data/transformationConfig.ts";
-import type { CopyStatus } from "./components/CopyText";
+import { textTools } from "./data/transformationConfig";
 import { Footer } from "./components/Footer/Footer";
 import styles from "./App.module.css";
 
-/**
- * The main application component for transforming text.
- *
- * Handles user input, text transformation actions (escaping/unescaping newlines),
- * and provides a button to copy the result to the clipboard.
- *
- * Includes the following components:
- * - Header: Displays the page title.
- * - TextInput: Text area for user input.
- * - ToolSelector: Buttons to choose a text transformation.
- * - TextOutput: Displays the transformed text.
- * - CopyText: Button to copy the output.
- *
- * @returns The complete interface for the text transformer app.
- */
+/** Root component that wires together input, transformation, and output. */
 function App() {
-    // Ref for accessing the raw textarea value
-    const inputRef = useRef<HTMLTextAreaElement>(null);
-
-    // State for storing the transformed result
-    const [result, setResult] = useState("");
-
-    // State for storing the status of copying the result to the clipboard
+    const [input, setInput] = useState("");
+    const [selectedTool, setSelectedTool] = useState(textTools[0].selectOption);
     const [copyStatus, setCopyStatus] = useState<CopyStatus | null>(null);
-
-    // Clear message after 3 seconds
     const clearTimerRef = useRef<number | null>(null);
+
+    const output = useMemo(() => {
+        const tool = textTools.find((t) => t.selectOption === selectedTool);
+        return tool ? tool.transform(input) : input;
+    }, [input, selectedTool]);
 
     const clearStatusSoon = () => {
         if (clearTimerRef.current) window.clearTimeout(clearTimerRef.current);
@@ -53,57 +38,21 @@ function App() {
         };
     }, []);
 
-    /**
-     * Handles copying the transformed text to the clipboard.
-     *
-     * Displays a styled status message based on the outcome:
-     * - Shows a warning if there is no text to copy.
-     * - Shows a success message if the text is successfully copied.
-     * - Shows an error message if the clipboard operation fails.
-     *
-     * All messages are cleared after a short timeout using `clearStatusSoon`.
-     */
     const handleCopy = async () => {
-        if (!result) {
+        if (!output) {
             setCopyStatus({ kind: "warning", text: "Nothing to copy" });
             clearStatusSoon();
             return;
         }
 
         try {
-            await navigator.clipboard.writeText(result);
-            setCopyStatus({
-                kind: "success",
-                text: "Text copied to clipboard",
-            });
-        } catch (err) {
-            setCopyStatus({
-                kind: "error",
-                text: `Unable to copy text: ${String(err)}`,
-            });
+            await navigator.clipboard.writeText(output);
+            setCopyStatus({ kind: "success", text: "Copied" });
+        } catch {
+            setCopyStatus({ kind: "error", text: "Copy failed" });
         }
 
         clearStatusSoon();
-    };
-
-    /**
-     * Finds and applies the selected transformation tool to the input text.
-     *
-     * @param tool - The selected tool's identifier (for example, "escape", "uppercase").
-     */
-    const handleToolSelect = (tool: string) => {
-        if (!inputRef.current) return;
-
-        const inputText = inputRef.current.value;
-        const selectedTool = textTools.find((t) => t.selectOption === tool);
-
-        if (selectedTool?.transform) {
-            const transformed = selectedTool.transform(inputText);
-            setResult(transformed);
-        } else {
-            // Unknown tool identifier – safe no-op
-            console.warn(`Unknown tool: ${tool}`);
-        }
     };
 
     return (
@@ -111,13 +60,19 @@ function App() {
             <SkipLink />
             <Header />
 
-            <main id="main-content" className="mx-auto max-w-6xl p-6 md:p-8">
-                <div className="mx-auto space-y-6">
-                    <TextInput ref={inputRef} />
-                    <ToolSelector onSelect={handleToolSelect} />
-                    <TextOutput text={result} />
-                    <CopyText onClick={handleCopy} status={copyStatus} />
-                </div>
+            <main id="main-content" className={styles.main}>
+                <InputPanel
+                    value={input}
+                    onChange={setInput}
+                    selectedTool={selectedTool}
+                    onToolChange={setSelectedTool}
+                    tools={textTools}
+                />
+                <OutputPanel
+                    output={output}
+                    onCopy={handleCopy}
+                    copyStatus={copyStatus}
+                />
             </main>
 
             <Footer />
