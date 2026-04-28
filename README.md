@@ -22,13 +22,13 @@ The [Transform Text Extension](https://github.com/Karl-Horning/transform-text-ex
 
 **Live transformation** — Output updates on every keystroke.
 
-**Transformation selector** — A single `<select>` exposes all fifteen transformations, scales to mobile without layout changes, and makes adding new ones a one-line config entry.
+**Transformation selector** — A single `<select>` exposes all sixteen transformations, scales to mobile without layout changes, and makes adding new ones a one-line config entry.
 
 **`prefers-color-scheme`** — Light and dark mode follow the OS preference.
 
 **Config as the single source of truth** — All site metadata (title, description, URL, theme colour) is defined once in `src/config.ts`. Components, the PWA manifest, and the extension all reference the same constants.
 
-**Pure transformation functions** — All fifteen transformations live in a single utility file with no side effects, making them easy to port to the VS Code extension.
+**Pure transformation functions** — All sixteen transformations live in a single utility file with no side effects, making them easy to port to the VS Code extension.
 
 **WCAG AA contrast** — Colour combinations are verified programmatically against the panel background in both light and dark mode.
 
@@ -80,6 +80,7 @@ Open [http://localhost:5173](http://localhost:5173).
 | Sarcastic SpongeBob | `hElLo WoRlD` |
 | Alternating Case | `HeLlO wOrLd` |
 | Trim Whitespace | `hello world` |
+| Remove Special Characters | `this is kebab case` |
 
 ## Feedback
 
