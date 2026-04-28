@@ -1,0 +1,24 @@
+.header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+    font-family: var(--font-ui);
+    font-size: 0.975rem;
+    font-weight: normal;
+    letter-spacing: 0.04em;
+    color: var(--color-text-primary);
+}
+
+.tagline {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+}
