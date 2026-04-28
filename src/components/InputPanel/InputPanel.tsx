@@ -1,7 +1,4 @@
-/**
- * @fileoverview Input panel component containing the text area and
- * transformation selector.
- */
+/** @fileoverview Input panel component containing the text area and transformation selector. */
 import styles from "./InputPanel.module.css";
 
 /** A single entry from the transformation tool list. */

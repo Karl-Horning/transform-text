@@ -1,7 +1,4 @@
-/**
- * @fileoverview Site header component showing the application title and usage
- * hint.
- */
+/** @fileoverview Site header component showing the application title and usage hint. */
 import { SITE_TAGLINE, SITE_TITLE } from "../../config";
 import styles from "./Header.module.css";
 
