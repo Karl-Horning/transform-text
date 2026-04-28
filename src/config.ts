@@ -33,3 +33,6 @@ export const SITE_START_YEAR = 2024;
 
 /** Brand colour used in the PWA manifest and theme-color meta tag. */
 export const THEME_COLOR = "#0d0d0d";
+
+/** Brief usage hint displayed in the site header. */
+export const SITE_TAGLINE = "// paste → pick → copy";

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Header from "./components/Header";
+import { Header } from "./components/Header/Header";
 import TextInput from "./components/TextInput";
 import ToolSelector from "./components/ToolSelector";
 import TextOutput from "./components/TextOutput";
@@ -109,7 +109,7 @@ function App() {
     return (
         <div className={styles.app}>
             <SkipLink />
-            <Header title="Transform Text" />
+            <Header />
 
             <main id="main-content" className="mx-auto max-w-6xl p-6 md:p-8">
                 <div className="mx-auto space-y-6">
