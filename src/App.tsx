@@ -4,10 +4,11 @@ import TextInput from "./components/TextInput";
 import ToolSelector from "./components/ToolSelector";
 import TextOutput from "./components/TextOutput";
 import CopyText from "./components/CopyText";
-import Footer from "./components/Footer";
 import SkipLink from "./components/SkipLink";
 import { textTools } from "./data/transformationConfig.ts";
 import type { CopyStatus } from "./components/CopyText";
+import { Footer } from "./components/Footer/Footer";
+import styles from "./App.module.css";
 
 /**
  * The main application component for transforming text.
@@ -106,7 +107,7 @@ function App() {
     };
 
     return (
-        <>
+        <div className={styles.app}>
             <SkipLink />
             <Header title="Transform Text" />
 
@@ -120,7 +121,7 @@ function App() {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }
 
