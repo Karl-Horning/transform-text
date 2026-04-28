@@ -233,6 +233,19 @@ export const alternatingCase = (input: string): string => {
 };
 
 /**
+ * Capitalises the first letter of every word in the input string.
+ *
+ * @param input - The text to convert to start case.
+ * @returns The input string with every word capitalised.
+ */
+export const startCase = (input: string): string =>
+    input
+        .trim()
+        .split(/\s+/)
+        .map(capitalise)
+        .join(" ");
+
+/**
  * Converts a string to title case following the Chicago/MLA style guidelines.
  *
  * Capitalises nouns, verbs, adjectives, adverbs, and subordinating conjunctions.
