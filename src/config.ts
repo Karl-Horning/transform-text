@@ -16,7 +16,7 @@ export const SITE_SHORT_NAME = "Transform Text";
 
 /** Page description used in meta tags and the PWA manifest. */
 export const SITE_DESCRIPTION =
-  "A lightweight text transformation tool for developers. Escape newlines, switch between case formats, and copy results to your clipboard.";
+  "A developer tool for coding and writing. Paste text, pick a transformation, and copy the result.";
 
 /** Author display name used in metadata. */
 export const AUTHOR_NAME = "Karl Horning";

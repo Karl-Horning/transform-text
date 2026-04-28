@@ -1,6 +1,6 @@
 # Transform Text
 
-A personal developer tool for coding and writing. Paste text, pick a transformation, and copy the result.
+A developer tool for coding and writing. Paste text, pick a transformation, and copy the result.
 
 **Live site:** [karlhorning.dev/transform-text](https://www.karlhorning.dev/transform-text/)
 
@@ -20,11 +20,11 @@ The [Transform Text Extension](https://github.com/Karl-Horning/transform-text-ex
 
 ## Notable decisions
 
-**Live transformation** — Output updates on every keystroke via `useMemo`.
+**Live transformation** — Output updates on every keystroke.
 
 **Transformation selector** — A single `<select>` exposes all thirteen transformations, scales to mobile without layout changes, and makes adding new ones a one-line config entry.
 
-**`prefers-color-scheme`** — Light and dark mode follow the OS preference automatically.
+**`prefers-color-scheme`** — Light and dark mode follow the OS preference.
 
 **Config as the single source of truth** — All site metadata (title, description, URL, theme colour) is defined once in `src/config.ts`. Components, the PWA manifest, and the extension all reference the same constants.
 
@@ -32,7 +32,13 @@ The [Transform Text Extension](https://github.com/Karl-Horning/transform-text-ex
 
 **WCAG AA contrast** — Colour combinations are verified programmatically against the panel background in both light and dark mode.
 
-**Testing strategy** — 85+ tests cover all transformation functions and their edge cases. Every component has a jest-axe accessibility check.
+**Testing strategy** — 85+ tests cover all transformation functions and their edge cases. Every component has a jest-axe accessibility check. Accessibility was also verified manually with the macOS screen reader and by navigating the app using only a keyboard.
+
+**Design assets** — Favicons and the Open Graph preview image were created in Affinity and are included under `design/`.
+
+**Lighthouse** — The app scores 100 across Performance, Accessibility, Best Practices, and SEO on all device profiles.
+
+**Mobile font size** — Interactive elements (text areas and the transformation select) use `font-size: 1rem` on mobile to prevent iOS Safari from auto-zooming on focus. The original sizes are restored at the 640 px breakpoint.
 
 ## Local development
 
