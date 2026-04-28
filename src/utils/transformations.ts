@@ -379,11 +379,12 @@ export const sentenceCase = (input: string): string => {
  * @param input - The text to strip of special characters.
  * @returns The input string with accented characters normalised and special characters replaced by spaces.
  */
-export const removeSpecialCharacters = (input: string): string =>
-    input
-        .trim()
-        .normalize("NFD")
-        .replace(/[̀-ͯ]/g, "")
-        .replace(/[^a-zA-Z0-9\s]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
+export const removeSpecialCharacters = (input: string): string => {
+    let result = "";
+    for (const char of input.trim().normalize("NFD")) {
+        const code = char.codePointAt(0) ?? 0;
+        if (code >= 0x0300 && code <= 0x036f) continue;
+        result += /[a-zA-Z0-9\s]/.test(char) ? char : " ";
+    }
+    return result.replace(/\s+/g, " ").trim();
+};
