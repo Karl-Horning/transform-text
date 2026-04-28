@@ -1,18 +1,75 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" href="icons/icon-192.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Transform Text</title>
 
-        <!-- iOS Add-to-Home-Screen helpers -->
+        <!-- Primary -->
+        <meta name="google" content="notranslate" />
+        <title>%SITE_TITLE%</title>
+        <meta name="description" content="%SITE_DESCRIPTION%" />
+        <meta name="author" content="%AUTHOR_NAME%" />
+        <link rel="canonical" href="%SITE_URL%" />
+
+        <!-- Theme -->
+        <meta name="theme-color" content="%THEME_COLOR_LIGHT%" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="%THEME_COLOR%" media="(prefers-color-scheme: dark)" />
+
+        <!-- PWA -->
+        <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="Number Cards" />
-        <link rel="apple-touch-icon" href="icons/icon-192.png" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="%SITE_SHORT_NAME%" />
 
-        <!-- manifest path relative to this page (resolves under /number-cards-pwa/) -->
-        <link rel="manifest" href="manifest.webmanifest" />
+        <!-- Favicons -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="%BASE_URL%favicon/favicon-16x16.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="%BASE_URL%favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="%BASE_URL%favicon/favicon-96x96.png"
+        />
+        <link rel="shortcut icon" href="%BASE_URL%favicon/favicon.ico" />
+        <link rel="apple-touch-icon" href="%BASE_URL%favicon/apple-icon.png" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="%BASE_URL%favicon/apple-icon-180x180.png"
+        />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="%SITE_URL%" />
+        <meta property="og:site_name" content="%SITE_TITLE%" />
+        <meta property="og:title" content="%SITE_TITLE%" />
+        <meta property="og:description" content="%SITE_DESCRIPTION%" />
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:image" content="%SITE_URL%preview-image.png" />
+        <meta property="og:image:alt" content="%SITE_TITLE%" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="%SITE_TITLE%" />
+        <meta name="twitter:description" content="%SITE_DESCRIPTION%" />
+        <meta name="twitter:image" content="%SITE_URL%preview-image.png" />
+        <meta name="twitter:image:alt" content="%SITE_TITLE%" />
     </head>
     <body>
         <div id="root"></div>

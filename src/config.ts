@@ -31,8 +31,11 @@ export const REPO_URL =
 /** Year the project was first published, used for the copyright range. */
 export const SITE_START_YEAR = 2024;
 
-/** Brand colour used in the PWA manifest and theme-color meta tag. */
+/** Brand colour for dark mode, used in the PWA manifest and theme-color meta tag. */
 export const THEME_COLOR = "#0d0d0d";
+
+/** Brand colour for light mode, used in the theme-color meta tag. */
+export const THEME_COLOR_LIGHT = "#f7f4ef";
 
 /** Brief usage hint displayed in the site header. */
 export const SITE_TAGLINE = "// paste → pick → copy";
