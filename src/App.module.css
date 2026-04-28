@@ -23,21 +23,3 @@
         gap: 1.25rem;
     }
 }
-
-.subtitle {
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-}
-
-.status {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-}
-
-.error {
-    font-size: 0.875rem;
-    color: #f87171;
-}
