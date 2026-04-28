@@ -11,6 +11,7 @@ import {
     sarcasticSpongeBob,
     sentenceCase,
     snakeCase,
+    startCase,
     titleCaseAP,
     titleCaseMla,
     trimWhitespace,
@@ -69,6 +70,11 @@ export const textTools = [
         label: "Alternating Case",
         selectOption: "alternatingCase",
         transform: alternatingCase,
+    },
+    {
+        label: "Start Case",
+        selectOption: "startCase",
+        transform: startCase,
     },
     {
         label: "MLA Title Case",

@@ -17,6 +17,7 @@ import {
     pascalCase,
     camelCase,
     sarcasticSpongeBob,
+    startCase,
     titleCaseMla,
     titleCaseAP,
     sentenceCase,
@@ -289,6 +290,30 @@ describe("alternatingCase", () => {
 
     it("returns an empty string for whitespace-only input", () => {
         expect(alternatingCase("   ")).toBe("");
+    });
+});
+
+describe("startCase", () => {
+    it("capitalises the first letter of every word", () => {
+        expect(startCase("hello world")).toBe("Hello World");
+    });
+
+    it("capitalises short words that MLA and AP would lowercase", () => {
+        expect(startCase("the quick brown fox jumps over the lazy dog")).toBe(
+            "The Quick Brown Fox Jumps Over The Lazy Dog"
+        );
+    });
+
+    it("lowercases the remaining letters of each word", () => {
+        expect(startCase("HELLO WORLD")).toBe("Hello World");
+    });
+
+    it("returns an empty string for empty input", () => {
+        expect(startCase("")).toBe("");
+    });
+
+    it("returns an empty string for whitespace-only input", () => {
+        expect(startCase("   ")).toBe("");
     });
 });
 
