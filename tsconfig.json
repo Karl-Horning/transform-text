@@ -7,6 +7,8 @@
     "compilerOptions": {
         "jsx": "react-jsx",
         "esModuleInterop": true,
-        "types": ["jest", "@testing-library/jest-dom"]
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "types": ["vitest/globals", "@testing-library/jest-dom"]
     }
 }
