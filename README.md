@@ -8,6 +8,27 @@ A developer tool for coding and writing. Paste text, pick a transformation, and 
 
 The [Transform Text Extension](https://github.com/Karl-Horning/transform-text-extension) is the counterpart to this repo. Changes and new transformations are made here first before being ported to the extension.
 
+## Transformations
+
+| Name | Example input | Example output |
+| --- | --- | --- |
+| Escape Newlines | `line one` + newline + `line two` | `line one\nline two` |
+| Unescape Newlines | `line one\nline two` | `line one` + newline + `line two` |
+| Uppercase | `hello world` | `HELLO WORLD` |
+| Lowercase | `HELLO WORLD` | `hello world` |
+| snake_case | `hello world` | `hello_world` |
+| kebab-case | `hello world` | `hello-world` |
+| PascalCase | `hello world` | `HelloWorld` |
+| camelCase | `hello world` | `helloWorld` |
+| Sentence case | `HELLO WORLD` | `Hello world` |
+| Start Case | `tools of the trade` | `Tools Of The Trade` |
+| MLA Title Case | `tools of the trade` | `Tools of the Trade` |
+| AP Title Case | `tools of the trade` | `Tools Of the Trade` |
+| Sarcastic SpongeBob | `hello world` | `hElLo WoRlD` |
+| Alternating Case | `hello world` | `HeLlO wOrLd` |
+| Trim Whitespace | `··hello···world··` | `hello world` |
+| Remove Special Characters | `this-is-kebab-case` | `this is kebab case` |
+
 ## Stack
 
 - **React 19**
@@ -60,27 +81,6 @@ Open [http://localhost:5173](http://localhost:5173).
 | `test` | Run tests once and exit |
 | `test:watch` | Run tests in watch mode |
 | `test:verbose` | Run tests once with verbose output |
-
-## Transformations
-
-| Name | Example output |
-| --- | --- |
-| Escape Newlines | `line one\nline two` |
-| Unescape Newlines | `line one` + newline + `line two` |
-| Uppercase | `HELLO WORLD` |
-| Lowercase | `hello world` |
-| snake_case | `hello_world` |
-| kebab-case | `hello-world` |
-| PascalCase | `HelloWorld` |
-| camelCase | `helloWorld` |
-| Sentence case | `Hello world` |
-| Start Case | `Tools Of The Trade` |
-| MLA Title Case | `Tools of the Trade` |
-| AP Title Case | `Tools Of the Trade` |
-| Sarcastic SpongeBob | `hElLo WoRlD` |
-| Alternating Case | `HeLlO wOrLd` |
-| Trim Whitespace | `hello world` |
-| Remove Special Characters | `this is kebab case` |
 
 ## Feedback
 

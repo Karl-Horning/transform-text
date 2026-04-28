@@ -1,11 +1,14 @@
 /** @fileoverview Input panel component containing the text area and transformation selector. */
 import styles from "./InputPanel.module.css";
 
-/** A single entry from the transformation tool list. */
 interface Tool {
     label: string;
     selectOption: string;
-    transform: (input: string) => string;
+}
+
+interface ToolGroup {
+    group: string;
+    options: Tool[];
 }
 
 interface InputPanelProps {
@@ -17,8 +20,8 @@ interface InputPanelProps {
     selectedTool: string;
     /** Called with the new tool identifier when the selection changes. */
     onToolChange: (tool: string) => void;
-    /** List of available transformation tools. */
-    tools: Tool[];
+    /** Transformation tools organised into labelled groups. */
+    groups: ToolGroup[];
 }
 
 /** Input panel with a labelled text area and a transformation selector. */
@@ -27,7 +30,7 @@ export function InputPanel({
     onChange,
     selectedTool,
     onToolChange,
-    tools,
+    groups,
 }: InputPanelProps) {
     return (
         <section className={styles.panel} aria-labelledby="input-panel-label">
@@ -41,10 +44,14 @@ export function InputPanel({
                     onChange={(e) => onToolChange(e.target.value)}
                     aria-label="Select transformation"
                 >
-                    {tools.map(({ label, selectOption }) => (
-                        <option key={selectOption} value={selectOption}>
-                            {label}
-                        </option>
+                    {groups.map(({ group, options }) => (
+                        <optgroup key={group} label={group}>
+                            {options.map(({ label, selectOption }) => (
+                                <option key={selectOption} value={selectOption}>
+                                    {label}
+                                </option>
+                            ))}
+                        </optgroup>
                     ))}
                 </select>
             </div>
