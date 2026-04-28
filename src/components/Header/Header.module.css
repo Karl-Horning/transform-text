@@ -1,6 +1,7 @@
 .header {
     position: relative;
     z-index: 1;
+    background: var(--color-bg-panel);
     border-bottom: 1px solid var(--color-border);
 }
 
