@@ -1,79 +1,82 @@
 # Transform Text
 
-A lightweight text transformation tool for developers. Escape newlines, switch between case formats, and copy results to your clipboard.
+A personal developer tool for coding and writing. Paste text, pick a transformation, and copy the result.
 
-- **Live demo**: [karlhorning.dev/transform-text](https://www.karlhorning.dev/transform-text/)
-- **Author**: [Karl Horning](https://github.com/Karl-Horning)
-- **Licence**: MIT
+**Live site:** [karlhorning.dev/transform-text](https://www.karlhorning.dev/transform-text/)
 
-## Table of Contents
+## VS Code extension
 
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Scripts](#scripts)
-- [Transformations](#transformations)
-- [Tests](#tests)
-- [Contributing](#contributing)
+The [Transform Text Extension](https://github.com/Karl-Horning/transform-text-extension) is the counterpart to this repo. Changes and new transformations are made here first before being ported to the extension.
 
-## Tech Stack
+## Stack
 
-- **Framework**: React (with Vite)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Testing**: Jest
-- **Tooling**: ESLint, Prettier
+- **React 19**
+- **TypeScript 5.8**
+- **Vite 7**
+- **CSS Modules**
+- **Vitest** + **React Testing Library** + **jest-axe**
+- **PWA** — service worker and web app manifest
+- Deployed to **GitHub Pages** via GitHub Actions
 
-[↑ Back to top](#transform-text)
+## Notable decisions
 
-## Installation
+**Live transformation** — Output updates on every keystroke via `useMemo`.
+
+**Transformation selector** — A single `<select>` exposes all thirteen transformations, scales to mobile without layout changes, and makes adding new ones a one-line config entry.
+
+**`prefers-color-scheme`** — Light and dark mode follow the OS preference automatically.
+
+**Config as the single source of truth** — All site metadata (title, description, URL, theme colour) is defined once in `src/config.ts`. Components, the PWA manifest, and the extension all reference the same constants.
+
+**Pure transformation functions** — All thirteen transformations live in a single utility file with no side effects, making them easy to port to the VS Code extension.
+
+**WCAG AA contrast** — Colour combinations are verified programmatically against the panel background in both light and dark mode.
+
+**Testing strategy** — 85+ tests cover all transformation functions and their edge cases. Every component has a jest-axe accessibility check.
+
+## Local development
 
 ```bash
-git clone https://github.com/Karl-Horning/transform-text.git
-cd transform-text
 npm install
 npm run dev
 ```
 
-[↑ Back to top](#transform-text)
+Open [http://localhost:5173](http://localhost:5173).
 
 ## Scripts
 
-| Command                | Description                   |
-| ---------------------- | ----------------------------- |
-| `npm run dev`          | Start local dev server        |
-| `npm run build`        | Create production build       |
-| `npm run preview`      | Preview production build      |
-| `npm run lint`         | Run ESLint checks             |
-| `npm run test`         | Run all tests once            |
-| `npm run test:watch`   | Run tests in watch mode       |
-| `npm run test:verbose` | Run tests with verbose output |
-
-[↑ Back to top](#transform-text)
+| Script | Description |
+| --- | --- |
+| `dev` | Start the Vite development server |
+| `build` | Type-check and build for production |
+| `lint` | Run ESLint |
+| `preview` | Preview the production build locally |
+| `test` | Run tests once and exit |
+| `test:watch` | Run tests in watch mode |
+| `test:verbose` | Run tests once with verbose output |
 
 ## Transformations
 
-- Escape / Unescape Newlines
-- Uppercase / Lowercase
-- snake_case, kebab-case, PascalCase, camelCase
-- Sentence case, MLA Title Case, AP Title Case
-- Sarcastic SpongeBob
-- Trim Whitespace
+| Name | Example output |
+| --- | --- |
+| Escape Newlines | `line one\nline two` |
+| Unescape Newlines | `line one` + newline + `line two` |
+| Uppercase | `HELLO WORLD` |
+| Lowercase | `hello world` |
+| snake_case | `hello_world` |
+| kebab-case | `hello-world` |
+| PascalCase | `HelloWorld` |
+| camelCase | `helloWorld` |
+| Sentence case | `Hello world` |
+| MLA Title Case | `The Quick Brown Fox` |
+| AP Title Case | `The Quick Brown Fox` |
+| Sarcastic SpongeBob | `hElLo WoRlD` |
+| Trim Whitespace | `hello world` |
 
-[↑ Back to top](#transform-text)
+## Feedback
 
-## Tests
+Bug reports and suggestions are welcome via [GitHub Issues](https://github.com/Karl-Horning/transform-text/issues).
 
-Unit tests cover all transformation functions, including edge cases for empty strings, whitespace-only input, and strings containing numbers.
+## Licence
 
-```bash
-npm run test
-npm run test:watch  # watch mode
-```
-
-[↑ Back to top](#transform-text)
-
-## Contributing
-
-Open an issue before submitting a pull request for any significant changes.
-
-[↑ Back to top](#transform-text)
+Released under the [MIT Licence](./LICENSE) by [Karl Horning](https://github.com/Karl-Horning).
