@@ -1,2 +1,92 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-ui:   "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --font-sans: "DM Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ── Light mode ────────────────────────────────────────── */
+:root {
+    --color-bg:          #f7f4ef;
+    --color-bg-panel:    #edeae3;
+    --color-bg-textarea: #f7f4ef;
+
+    --color-border:       #ccc7bc;
+    --color-border-focus: #b07d2a;
+
+    --color-text-primary: #1c1a16;
+    --color-text-muted:   #5e5248;
+
+    --color-accent:     #7a530e;
+    --color-accent-dim: #7a530e20;
+
+    --color-output-text: #1c6b3a;
+
+    --color-ok-bg:   #eaf4ec;
+    --color-ok-text: #235c2e;
+
+    --color-warn-bg:   #fef5e2;
+    --color-warn-text: #8a6020;
+
+    --color-err-bg:   #faeaea;
+    --color-err-text: #8b2020;
+}
+
+/* ── Dark mode ─────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg:          #0f0e0b;
+        --color-bg-panel:    #191712;
+        --color-bg-textarea: #0f0e0b;
+
+        --color-border:       #2a2720;
+        --color-border-focus: #c9922d;
+
+        --color-text-primary: #e2ddd5;
+        --color-text-muted:   #9e8d7b;
+
+        --color-accent:     #c9922d;
+        --color-accent-dim: #c9922d18;
+
+        --color-output-text: #5db87a;
+
+        --color-ok-bg:   #0d1f12;
+        --color-ok-text: #5db87a;
+
+        --color-warn-bg:   #1c1408;
+        --color-warn-text: #c9922d;
+
+        --color-err-bg:   #1f0e0e;
+        --color-err-text: #d97070;
+    }
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: light dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-ui);
+    margin: 0;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+#root {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
