@@ -6,16 +6,21 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { InputPanel } from "./InputPanel";
 
-const tools = [
+const groups = [
     {
-        label: "Uppercase",
-        selectOption: "uppercase",
-        transform: (s: string) => s.toUpperCase(),
-    },
-    {
-        label: "Lowercase",
-        selectOption: "lowercase",
-        transform: (s: string) => s.toLowerCase(),
+        group: "Case",
+        options: [
+            {
+                label: "Uppercase",
+                selectOption: "uppercase",
+                transform: (s: string) => s.toUpperCase(),
+            },
+            {
+                label: "Lowercase",
+                selectOption: "lowercase",
+                transform: (s: string) => s.toLowerCase(),
+            },
+        ],
     },
 ];
 
@@ -27,7 +32,7 @@ describe("InputPanel", () => {
                 onChange={vi.fn()}
                 selectedTool="uppercase"
                 onToolChange={vi.fn()}
-                tools={tools}
+                groups={groups}
             />
         );
         expect(
@@ -43,7 +48,7 @@ describe("InputPanel", () => {
                 onChange={onChange}
                 selectedTool="uppercase"
                 onToolChange={vi.fn()}
-                tools={tools}
+                groups={groups}
             />
         );
         fireEvent.change(
@@ -60,7 +65,7 @@ describe("InputPanel", () => {
                 onChange={vi.fn()}
                 selectedTool="uppercase"
                 onToolChange={vi.fn()}
-                tools={tools}
+                groups={groups}
             />
         );
         expect(
@@ -79,7 +84,7 @@ describe("InputPanel", () => {
                 onChange={vi.fn()}
                 selectedTool="uppercase"
                 onToolChange={onToolChange}
-                tools={tools}
+                groups={groups}
             />
         );
         fireEvent.change(screen.getByRole("combobox"), {
@@ -95,7 +100,7 @@ describe("InputPanel", () => {
                 onChange={vi.fn()}
                 selectedTool="uppercase"
                 onToolChange={vi.fn()}
-                tools={tools}
+                groups={groups}
             />
         );
         const results = await axe(container);

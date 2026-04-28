@@ -7,7 +7,7 @@ import { InputPanel } from "./components/InputPanel/InputPanel";
 import { OutputPanel } from "./components/OutputPanel/OutputPanel";
 import type { CopyStatus } from "./components/OutputPanel/OutputPanel";
 import { SkipLink } from "./components/SkipLink/SkipLink";
-import { textTools } from "./data/transformationConfig";
+import { textTools, transformationGroups } from "./data/transformationConfig";
 import { Footer } from "./components/Footer/Footer";
 import styles from "./App.module.css";
 
@@ -66,7 +66,7 @@ function App() {
                     onChange={setInput}
                     selectedTool={selectedTool}
                     onToolChange={setSelectedTool}
-                    tools={textTools}
+                    groups={transformationGroups}
                 />
                 <OutputPanel
                     output={output}

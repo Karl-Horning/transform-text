@@ -1,5 +1,5 @@
 /**
- * @fileoverview Configuration for the available text transformation tools.
+ * @fileoverview Configuration for the available text transformation tools, organised by group.
  */
 import {
     alternatingCase,
@@ -20,86 +20,63 @@ import {
     uppercase,
 } from "../utils/transformations";
 
-/** Available text transformation tools, each with a label, identifier, and transform function. */
-export const textTools = [
+/** A single transformation tool entry. */
+export interface TransformationTool {
+    label: string;
+    selectOption: string;
+    transform: (input: string) => string;
+}
+
+/** A named group of related transformation tools. */
+export interface TransformationGroup {
+    group: string;
+    options: TransformationTool[];
+}
+
+/** Transformation tools organised into labelled groups for the select menu. */
+export const transformationGroups: TransformationGroup[] = [
     {
-        label: "Escape Newlines",
-        selectOption: "escape",
-        transform: escapeNewlines,
+        group: "Escaping",
+        options: [
+            { label: "Escape Newlines", selectOption: "escape", transform: escapeNewlines },
+            { label: "Unescape Newlines", selectOption: "unescape", transform: unescapeNewlines },
+        ],
     },
     {
-        label: "Unescape Newlines",
-        selectOption: "unescape",
-        transform: unescapeNewlines,
+        group: "Case",
+        options: [
+            { label: "Uppercase", selectOption: "uppercase", transform: uppercase },
+            { label: "Lowercase", selectOption: "lowercase", transform: lowercase },
+            { label: "Sentence Case", selectOption: "sentenceCase", transform: sentenceCase },
+            { label: "Start Case", selectOption: "startCase", transform: startCase },
+            { label: "MLA Title Case", selectOption: "titleCaseMla", transform: titleCaseMla },
+            { label: "AP Title Case", selectOption: "titleCaseAP", transform: titleCaseAP },
+        ],
     },
     {
-        label: "Uppercase",
-        selectOption: "uppercase",
-        transform: uppercase,
+        group: "Code Format",
+        options: [
+            { label: "snake_case", selectOption: "snakeCase", transform: snakeCase },
+            { label: "kebab-case", selectOption: "kebabCase", transform: kebabCase },
+            { label: "PascalCase", selectOption: "pascalCase", transform: pascalCase },
+            { label: "camelCase", selectOption: "camelCase", transform: camelCase },
+        ],
     },
     {
-        label: "Lowercase",
-        selectOption: "lowercase",
-        transform: lowercase,
+        group: "Fun",
+        options: [
+            { label: "Sarcastic SpongeBob", selectOption: "sarcasticSpongeBob", transform: sarcasticSpongeBob },
+            { label: "Alternating Case", selectOption: "alternatingCase", transform: alternatingCase },
+        ],
     },
     {
-        label: "snake_case",
-        selectOption: "snakeCase",
-        transform: snakeCase,
-    },
-    {
-        label: "kebab-case",
-        selectOption: "kebabCase",
-        transform: kebabCase,
-    },
-    {
-        label: "PascalCase",
-        selectOption: "pascalCase",
-        transform: pascalCase,
-    },
-    {
-        label: "camelCase",
-        selectOption: "camelCase",
-        transform: camelCase,
-    },
-    {
-        label: "Sarcastic SpongeBob",
-        selectOption: "sarcasticSpongeBob",
-        transform: sarcasticSpongeBob,
-    },
-    {
-        label: "Alternating Case",
-        selectOption: "alternatingCase",
-        transform: alternatingCase,
-    },
-    {
-        label: "Start Case",
-        selectOption: "startCase",
-        transform: startCase,
-    },
-    {
-        label: "MLA Title Case",
-        selectOption: "titleCaseMla",
-        transform: titleCaseMla,
-    },
-    {
-        label: "AP Title Case",
-        selectOption: "titleCaseAP",
-        transform: titleCaseAP,
-    },
-    {
-        label: "Sentence Case",
-        selectOption: "sentenceCase",
-        transform: sentenceCase,
-    },
-    {
-        label: "Trim Whitespace",
-        selectOption: "trim",
-        transform: trimWhitespace,
-    },
-    {
-        label: "Remove Special Characters",
-        selectOption: "removeSpecialCharacters",
-        transform: removeSpecialCharacters,
+        group: "Cleanup",
+        options: [
+            { label: "Trim Whitespace", selectOption: "trim", transform: trimWhitespace },
+            { label: "Remove Special Characters", selectOption: "removeSpecialCharacters", transform: removeSpecialCharacters },
+        ],
     },
 ];
+
+/** Flat list of all tools, derived from transformationGroups. Used for transform lookups. */
+export const textTools = transformationGroups.flatMap((g) => g.options);
