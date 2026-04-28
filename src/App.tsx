@@ -60,21 +60,19 @@ function App() {
             <SkipLink />
             <Header />
 
-            <main id="main-content" className="mx-auto max-w-6xl p-6 md:p-8">
-                <div className="mx-auto space-y-6">
-                    <InputPanel
-                        value={input}
-                        onChange={setInput}
-                        selectedTool={selectedTool}
-                        onToolChange={setSelectedTool}
-                        tools={textTools}
-                    />
-                    <OutputPanel
-                        output={output}
-                        onCopy={handleCopy}
-                        copyStatus={copyStatus}
-                    />
-                </div>
+            <main id="main-content" className={styles.main}>
+                <InputPanel
+                    value={input}
+                    onChange={setInput}
+                    selectedTool={selectedTool}
+                    onToolChange={setSelectedTool}
+                    tools={textTools}
+                />
+                <OutputPanel
+                    output={output}
+                    onCopy={handleCopy}
+                    copyStatus={copyStatus}
+                />
             </main>
 
             <Footer />
