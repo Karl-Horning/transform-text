@@ -369,3 +369,21 @@ export const sentenceCase = (input: string): string => {
 
     return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
 };
+
+/**
+ * Removes all non-alphanumeric characters from the input string, replacing them with spaces.
+ *
+ * Accented characters are converted to their ASCII equivalents before removal
+ * (e.g. á → a, é → e). Consecutive special characters collapse to a single space.
+ *
+ * @param input - The text to strip of special characters.
+ * @returns The input string with accented characters normalised and special characters replaced by spaces.
+ */
+export const removeSpecialCharacters = (input: string): string =>
+    input
+        .trim()
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-zA-Z0-9\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();

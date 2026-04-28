@@ -16,6 +16,7 @@ import {
     kebabCase,
     pascalCase,
     camelCase,
+    removeSpecialCharacters,
     sarcasticSpongeBob,
     startCase,
     titleCaseMla,
@@ -356,6 +357,44 @@ describe("titleCaseAP", () => {
 
     it("returns an empty string for empty input", () => {
         expect(titleCaseAP("")).toBe("");
+    });
+});
+
+describe("removeSpecialCharacters", () => {
+    it("replaces hyphens with spaces", () => {
+        expect(removeSpecialCharacters("this-is-kebab-case")).toBe(
+            "this is kebab case"
+        );
+    });
+
+    it("replaces underscores with spaces", () => {
+        expect(removeSpecialCharacters("hello_world")).toBe("hello world");
+    });
+
+    it("removes punctuation and collapses resulting spaces", () => {
+        expect(removeSpecialCharacters("hello, world!")).toBe("hello world");
+    });
+
+    it("preserves numbers", () => {
+        expect(removeSpecialCharacters("hello 123 world")).toBe(
+            "hello 123 world"
+        );
+    });
+
+    it("collapses consecutive special characters to a single space", () => {
+        expect(removeSpecialCharacters("hello--world")).toBe("hello world");
+    });
+
+    it("converts accented characters to their ASCII equivalents", () => {
+        expect(removeSpecialCharacters("naïve café")).toBe("naive cafe");
+    });
+
+    it("returns an empty string for empty input", () => {
+        expect(removeSpecialCharacters("")).toBe("");
+    });
+
+    it("returns an empty string for whitespace-only input", () => {
+        expect(removeSpecialCharacters("   ")).toBe("");
     });
 });
 

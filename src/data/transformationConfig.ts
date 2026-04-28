@@ -8,6 +8,7 @@ import {
     kebabCase,
     lowercase,
     pascalCase,
+    removeSpecialCharacters,
     sarcasticSpongeBob,
     sentenceCase,
     snakeCase,
@@ -95,5 +96,10 @@ export const textTools = [
         label: "Trim Whitespace",
         selectOption: "trim",
         transform: trimWhitespace,
+    },
+    {
+        label: "Remove Special Characters",
+        selectOption: "removeSpecialCharacters",
+        transform: removeSpecialCharacters,
     },
 ];
