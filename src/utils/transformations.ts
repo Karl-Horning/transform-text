@@ -211,6 +211,28 @@ export const sarcasticSpongeBob = (input: string): string => {
 };
 
 /**
+ * Alternates the case of each letter in the input string, starting with uppercase.
+ *
+ * Non-alphabetic characters are preserved in their original positions
+ * and do not affect the alternation index.
+ *
+ * @param input - The text to transform into alternating case.
+ * @returns The input string with alternating letter casing.
+ */
+export const alternatingCase = (input: string): string => {
+    const trimmed = input.trim();
+    let letterIndex = 0;
+    return [...trimmed]
+        .map((char) => {
+            if (!/[a-zA-Z]/.test(char)) return char;
+            return letterIndex++ % 2 === 0
+                ? char.toUpperCase()
+                : char.toLowerCase();
+        })
+        .join("");
+};
+
+/**
  * Converts a string to title case following the Chicago/MLA style guidelines.
  *
  * Capitalises nouns, verbs, adjectives, adverbs, and subordinating conjunctions.

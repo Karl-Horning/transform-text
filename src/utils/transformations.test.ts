@@ -5,6 +5,7 @@
  */
 import { describe, it, expect } from "vitest";
 import {
+    alternatingCase,
     capitalise,
     trimWhitespace,
     escapeNewlines,
@@ -264,6 +265,30 @@ describe("sarcasticSpongeBob", () => {
 
     it("returns an empty string for whitespace-only input", () => {
         expect(sarcasticSpongeBob("   ")).toBe("");
+    });
+});
+
+describe("alternatingCase", () => {
+    it("alternates case starting with uppercase, skipping non-letters", () => {
+        expect(alternatingCase("hello world")).toBe("HeLlO wOrLd");
+    });
+
+    it("does not count spaces or numbers in the alternation index", () => {
+        expect(alternatingCase("hello 123 world")).toBe("HeLlO 123 wOrLd");
+    });
+
+    it("matches the expected output for a multi-word phrase", () => {
+        expect(alternatingCase("this is in alternating case")).toBe(
+            "ThIs Is In AlTeRnAtInG cAsE"
+        );
+    });
+
+    it("returns an empty string for empty input", () => {
+        expect(alternatingCase("")).toBe("");
+    });
+
+    it("returns an empty string for whitespace-only input", () => {
+        expect(alternatingCase("   ")).toBe("");
     });
 });
 
