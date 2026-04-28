@@ -2,6 +2,7 @@
  * @fileoverview Configuration for the available text transformation tools.
  */
 import {
+    alternatingCase,
     camelCase,
     escapeNewlines,
     kebabCase,
@@ -63,6 +64,11 @@ export const textTools = [
         label: "Sarcastic SpongeBob",
         selectOption: "sarcasticSpongeBob",
         transform: sarcasticSpongeBob,
+    },
+    {
+        label: "Alternating Case",
+        selectOption: "alternatingCase",
+        transform: alternatingCase,
     },
     {
         label: "MLA Title Case",
