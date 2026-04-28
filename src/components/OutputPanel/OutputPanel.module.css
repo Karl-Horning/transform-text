@@ -27,7 +27,7 @@
     min-height: 220px;
     padding: 0.9rem;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--color-output-text);
     background: var(--color-bg-textarea);
@@ -116,4 +116,10 @@
     font-size: 0.6rem;
     color: var(--color-text-muted);
     margin-left: auto;
+}
+
+@media (min-width: 640px) {
+    .textarea {
+        font-size: 0.8rem;
+    }
 }
