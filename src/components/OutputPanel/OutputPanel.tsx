@@ -1,7 +1,4 @@
-/**
- * @fileoverview Output panel component displaying transformed text with a
- * clipboard copy action.
- */
+/** @fileoverview Output panel component displaying transformed text with a clipboard copy action. */
 import styles from "./OutputPanel.module.css";
 
 /** Describes the outcome of a clipboard copy attempt. */

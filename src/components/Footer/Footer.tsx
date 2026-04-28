@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Site footer component with copyright range and repository link.
+ */
 import {
   AUTHOR_NAME,
   AUTHOR_URL,

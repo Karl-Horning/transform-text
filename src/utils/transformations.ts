@@ -1,6 +1,7 @@
+/** @fileoverview Pure text transformation utilities used by the transformation config. */
+
 /**
- * Removes leading and trailing whitespace and collapses
- * internal consecutive spaces to a single space.
+ * Removes leading and trailing whitespace and collapses internal consecutive spaces to a single space.
  *
  * @param input - The text to trim.
  * @returns The trimmed string.
@@ -11,8 +12,6 @@ export const trimWhitespace = (input: string): string =>
 /**
  * Replaces all newline characters in the input string with the literal string `\n`.
  *
- * This is useful for escaping newlines in text where newlines need to be represented as `\n`.
- *
  * @param input - The text to escape newlines in.
  * @returns The input string with newlines replaced by `\n`.
  */
@@ -21,8 +20,6 @@ export const escapeNewlines = (input: string): string =>
 
 /**
  * Converts all literal `\n` sequences in the input string back into actual newline characters.
- *
- * This is useful for unescaping previously escaped newline sequences.
  *
  * @param input - The text to unescape newlines in.
  * @returns The input string with `\n` sequences replaced by actual newlines.
@@ -157,11 +154,7 @@ export const pascalCase = (input: string): string => {
 export const camelCase = (input: string): string => {
     const pascalText = pascalCase(input);
 
-    /**
-     * Match all sequences of:
-     * - Uppercase followed by lowercase letters (for example, "Response")
-     * - Consecutive uppercase letters (for example, "API", "OK")
-     */
+    // Matches PascalCase word boundaries, including consecutive-uppercase sequences like "API".
     const words = pascalText.match(/([A-Z][a-z0-9]*|[A-Z]+(?=[A-Z]|$))/g);
 
     if (!words) return pascalText;
