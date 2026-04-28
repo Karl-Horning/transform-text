@@ -31,3 +31,7 @@ dist-ssr
 *.afphoto-~lock~
 *.afpub-preview
 *.afpub-~lock~
+
+# Tests
+
+/coverage

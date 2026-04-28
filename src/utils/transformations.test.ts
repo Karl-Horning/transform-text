@@ -32,6 +32,10 @@ describe("capitalise", () => {
         expect(capitalise("a")).toBe("A");
         expect(capitalise("A")).toBe("A");
     });
+
+    it("returns an empty string for empty input", () => {
+        expect(capitalise("")).toBe("");
+    });
 });
 
 describe("trimWhitespace", () => {
@@ -252,6 +256,14 @@ describe("sarcasticSpongeBob", () => {
         nonAlphaPositions.forEach((i) => {
             expect(output[i]).toBe(input[i]);
         });
+    });
+
+    it("returns an empty string for empty input", () => {
+        expect(sarcasticSpongeBob("")).toBe("");
+    });
+
+    it("returns an empty string for whitespace-only input", () => {
+        expect(sarcasticSpongeBob("   ")).toBe("");
     });
 });
 
