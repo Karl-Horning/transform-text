@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Configuration for the available text transformation tools.
+ */
 import {
     camelCase,
     escapeNewlines,
@@ -9,75 +12,76 @@ import {
     snakeCase,
     titleCaseAP,
     titleCaseMla,
+    trimWhitespace,
     unescapeNewlines,
     uppercase,
 } from "../utils/transformations";
 
-/**
- * A list of available text transformation tools.
- *
- * Each tool includes the display text for the UI and a handler
- * function to perform the corresponding text transformation.
- */
+/** Available text transformation tools, each with a label, identifier, and transform function. */
 export const textTools = [
     {
-        buttonText: "Escape Newlines",
+        label: "Escape Newlines",
         selectOption: "escape",
         transform: escapeNewlines,
     },
     {
-        buttonText: "Unescape Newlines",
+        label: "Unescape Newlines",
         selectOption: "unescape",
         transform: unescapeNewlines,
     },
     {
-        buttonText: "Uppercase",
+        label: "Uppercase",
         selectOption: "uppercase",
         transform: uppercase,
     },
     {
-        buttonText: "Lowercase",
+        label: "Lowercase",
         selectOption: "lowercase",
         transform: lowercase,
     },
     {
-        buttonText: "snake_case",
+        label: "snake_case",
         selectOption: "snakeCase",
         transform: snakeCase,
     },
     {
-        buttonText: "kebab-case",
+        label: "kebab-case",
         selectOption: "kebabCase",
         transform: kebabCase,
     },
     {
-        buttonText: "PascalCase",
+        label: "PascalCase",
         selectOption: "pascalCase",
         transform: pascalCase,
     },
     {
-        buttonText: "camelCase",
+        label: "camelCase",
         selectOption: "camelCase",
         transform: camelCase,
     },
     {
-        buttonText: "Sarcastic SpongeBob",
+        label: "Sarcastic SpongeBob",
         selectOption: "sarcasticSpongeBob",
         transform: sarcasticSpongeBob,
     },
     {
-        buttonText: "MLA Title Case",
+        label: "MLA Title Case",
         selectOption: "titleCaseMla",
         transform: titleCaseMla,
     },
     {
-        buttonText: "AP Title Case",
+        label: "AP Title Case",
         selectOption: "titleCaseAP",
         transform: titleCaseAP,
     },
     {
-        buttonText: "Sentence Case",
+        label: "Sentence Case",
         selectOption: "sentenceCase",
         transform: sentenceCase,
+    },
+    {
+        label: "Trim Whitespace",
+        selectOption: "trim",
+        transform: trimWhitespace,
     },
 ];

@@ -5,10 +5,10 @@
         { "path": "./tsconfig.node.json" }
     ],
     "compilerOptions": {
-        "jsx": "react-jsx",
-        "esModuleInterop": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
+        "jsx": "react-jsx",
+        "esModuleInterop": true,
         "types": ["vitest/globals", "@testing-library/jest-dom"]
     }
 }
