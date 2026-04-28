@@ -6,7 +6,7 @@ import { Header } from "./components/Header/Header";
 import { InputPanel } from "./components/InputPanel/InputPanel";
 import { OutputPanel } from "./components/OutputPanel/OutputPanel";
 import type { CopyStatus } from "./components/OutputPanel/OutputPanel";
-import SkipLink from "./components/SkipLink";
+import { SkipLink } from "./components/SkipLink/SkipLink";
 import { textTools } from "./data/transformationConfig";
 import { Footer } from "./components/Footer/Footer";
 import styles from "./App.module.css";
